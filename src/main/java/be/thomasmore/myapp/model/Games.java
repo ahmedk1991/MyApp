@@ -17,6 +17,7 @@ public class Games {
     private double price;
     @Column(length = 500)
     private String description;
+
     private Date createdAt;
     private String imageFileName;
 

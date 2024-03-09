@@ -19,7 +19,7 @@ public class GamesDto {
     @Size(max=500,message = "The description cannot exceed 500 characters")
     private String description;
 
-    private MultipartFile imageFileName;
+    private MultipartFile imageFile;
 
     public String getName() {
         return name;
@@ -53,11 +53,11 @@ public class GamesDto {
         this.description = description;
     }
 
-    public MultipartFile getImageFileName() {
-        return imageFileName;
+    public MultipartFile getImageFile() {
+        return imageFile;
     }
 
-    public void setImageFileName(MultipartFile imageFileName) {
-        this.imageFileName = imageFileName;
+    public void setImageFileName(MultipartFile imageFile) {
+        this.imageFile = imageFile;
     }
 }

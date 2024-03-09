@@ -7,12 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
+@RequestMapping("/products")
 public class GamesController {
     @Autowired
     private GamesRepository gamesRepository;
-@GetMapping("/products")
+@GetMapping({"","/"})
     public String showGamesList(Model model) {
 
         Iterable<Games> allgames = gamesRepository.findAll();
@@ -21,11 +25,14 @@ public class GamesController {
         return "products/index";
     }
     @GetMapping("/create")
-    public String showCreatePage(Model model){
-        GamesDto gamesDto= new GamesDto();
-        model.addAttribute("gamesDto",gamesDto);
+    public String showCreatePage(Model model) {
+        GamesDto gamesDto = new GamesDto();
+        model.addAttribute("gamesDto", gamesDto);
 
-    return"products/createproduct";
+        return "products/createproduct";
     }
+    @PostMapping("/create")
+    public String createProduct()
+
 
 }
