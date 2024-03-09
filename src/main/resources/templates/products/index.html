@@ -33,7 +33,7 @@
             <td th:text="${game.id}"></td>
             <td th:text="${game.name}"></td>
             <td th:text="${game.category}"></td>
-            <td th:text="${game.price}"></td>
+            <td th:text="${game.price + 'Eur'}"></td>
             <td>
                 <img th:src="@{/img/${game.imageFileName}}" th:alt="${game.name}" style="width: 100px; height: auto;">
             </td>
@@ -41,8 +41,10 @@
 
             <td>
 
-                <a th:href="@{/games/edit/{id}(id=${game.id})}" class="btn btn-warning btn-sm">Edit</a>
-                <a th:href="@{/games/delete/{id}(id=${game.id})}" class="btn btn-danger btn-sm">Delete</a>
+
+                <a th:href="@{/products/edit/{id}(id=${game.id})}" class="btn btn-warning btn-sm">Edit</a>
+                <a th:href="@{/products/delete/{id}(id=${game.id})}" class="btn btn-danger btn-sm">Delete</a>
+
             </td>
         </tr>
         </tbody>
