@@ -64,15 +64,15 @@
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Image</label>
                     <div class="col-sm-8">
-                        <input class="form-control" type="file" th:field="*{imageFile}">
+                        <input class="form-control" type="file" th:field="${gamesDto.imageFile}">
                         <p th:if="${#fields.hasErrors('imageFile')}" th:errorclass="text-danger"
-                           th:errors="*{imageFile}"></p>
+                           th:errors="${gamesDto.imageFile}"></p>
                     </div>
                 </div>
 
 
-        </div>
-        <div class="container">
+
+
             <div class="row justify-content-center">
                 <div class="col-sm-4 d-grid p-2 m-2">
                     <button type="submit" class="btn btn-primary btn-block">Submit</button>
@@ -81,8 +81,6 @@
                     <a class="btn btn-outline-primary btn-block" href="/products" role="button">Cancel</a>
                 </div>
             </div>
-        </div>
-
 
         </form>
     </div>
