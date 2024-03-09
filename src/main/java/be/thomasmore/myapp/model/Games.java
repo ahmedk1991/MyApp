@@ -4,7 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
-
+import java.util.Date;
 
 @Entity
 
@@ -17,8 +17,10 @@ public class Games {
     private double price;
     @Column(length = 500)
     private String description;
-
+    private Date createdAt;
     private String imageFileName;
+
+
 
     public Games() {
 
@@ -64,7 +66,13 @@ public class Games {
         this.description = description;
     }
 
+    public Date getCreatedAt() {
+        return createdAt;
+    }
 
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public String getImageFileName() {
         return imageFileName;
