@@ -9,14 +9,12 @@
 </head>
 <body>
 
-<div th:replace="~{fragments/header :: header}">header</div>
+ <div th:replace="~{fragments/header :: header}">header</div>
 
 
-<div class="container">
+ <div class="container">
     <h1 class="text-center my-4">My games</h1>
     <a class="btn btn-primary" href="/products/create">Create Games</a>
-
-
 
 
     <table class="table">
@@ -33,12 +31,16 @@
         </thead>
         <tbody>
         <tr th:each="game : ${allgames}">
+
             <td th:text="${game.id}"></td>
             <td th:text="${game.name}"></td>
             <td th:text="${game.category}"></td>
             <td th:text="${game.price + 'Eur'}"></td>
             <td>
-                <img th:src="@{/img/${game.imageFileName}}" th:alt="${game.name}" style="width: 100px; height: auto;">
+
+                <img th:src="@{/img/{filename}(filename=${game.imageFileName})}" th:alt="${game.name}" style="width: 100px; height: auto;">
+
+
             </td>
             <td th:text="${game.createdAt}"></td>
 
@@ -52,14 +54,13 @@
         </tr>
         </tbody>
     </table>
-</div>
 
+ </div>
 
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <div th:replace="~{fragments/footer :: footer}">footer</div>
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-<div th:replace="~{fragments/footer :: footer}">footer</div>
 </body>
 </html>
