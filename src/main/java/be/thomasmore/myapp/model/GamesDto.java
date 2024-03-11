@@ -57,7 +57,7 @@ public class GamesDto {
         return imageFile;
     }
 
-    public void setImageFileName(MultipartFile imageFile) {
+    public void setImageFile(MultipartFile imageFile) {
         this.imageFile = imageFile;
     }
 }
