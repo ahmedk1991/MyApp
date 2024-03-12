@@ -9,10 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -48,4 +45,30 @@ public class GamesController {
     }
     return "redirect:/products";
     }
+    @GetMapping("/edit")
+    public String displayEditPage(Model model, @RequestParam int id){
+
+    try{
+       Games game=gamesRepository.findById(id).get();
+       model.addAttribute("game",game);
+
+       GamesDto gamesDto=new GamesDto();
+       gamesDto.setName(game.getName());
+       gamesDto.setCategory(game.getCategory());
+       gamesDto.setPrice(game.getPrice());
+       gamesDto.setDescription(game.getDescription());
+       gamesDto.setImageFile(gamesDto.getImageFile());
+
+       model.addAttribute("gamesDto",gamesDto);
+    }
+
+    catch(Exception ex){
+
+        System.out.println("Error: " + ex.getMessage());
+        return "redirect:/products";
+    }
+
+    return "products/editproduct";
+    }
+
 }
