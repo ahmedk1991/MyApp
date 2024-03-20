@@ -4,10 +4,11 @@ import be.thomasmore.myapp.model.Games;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface GamesRepository extends CrudRepository <Games,Integer> {
 
-    List<Games> findAllBy();
+    Optional<Games> findById(Integer id);
 
 
 }
