@@ -21,6 +21,9 @@ public class GamesDto {
 
     private MultipartFile imageFile;
 
+    public GamesDto() {
+    }
+
     public String getName() {
         return name;
     }

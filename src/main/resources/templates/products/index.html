@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div th:replace="~{fragments/header :: header}">Header</div>
+
 
 
  <div class="container">
@@ -48,7 +48,8 @@
 
 
                 <a th:href="@{/products/edit/{id}(id=${game.id})}" class="btn btn-warning btn-sm">Edit</a>
-                <a th:href="@{/products/delete/{id}(id=${game.id})}" class="btn btn-danger btn-sm">Delete</a>
+                <a th:href="@{/products/delete/{id}(id=${game.id})}" class="btn btn-danger btn-sm"
+                 onclick="return confirm('Are you sure you want to delete')">Delete</a>
 
             </td>
         </tr>

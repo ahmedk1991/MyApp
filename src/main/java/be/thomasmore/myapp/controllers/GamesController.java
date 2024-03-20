@@ -3,6 +3,7 @@ package be.thomasmore.myapp.controllers;
 import be.thomasmore.myapp.model.Games;
 import be.thomasmore.myapp.model.GamesDto;
 import be.thomasmore.myapp.repositories.GamesRepository;
+
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 import java.util.Optional;
 
 
@@ -37,6 +38,7 @@ public class GamesController {
 
         return "products/createproduct";
     }
+
 
     @PostMapping("/create")
     public String createProduct(
@@ -77,6 +79,7 @@ public class GamesController {
             return "redirect:/products";
         }
     }
+
     @PostMapping("/edit/{id}")
     public String editGame(@Valid @ModelAttribute GamesDto gamesDto, BindingResult result, @PathVariable int id) {
         if (result.hasErrors()) {
@@ -96,6 +99,7 @@ public class GamesController {
 
                 gamesRepository.save(game);
 
+
                 return "redirect:/products";
             } else {
 
@@ -106,6 +110,23 @@ public class GamesController {
             System.out.println("Error: " + ex.getMessage());
             return "redirect:/products";
         }
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(Model model, @PathVariable int id) {
+
+        Optional<Games> gameOptional = gamesRepository.findById(id);
+
+        if (gameOptional.isPresent()) {
+
+            Games game = gameOptional.get();
+            model.addAttribute("game", game);
+            gamesRepository.delete(game);
+
+            return "redirect:/products";
+        }
+
+        return "products";
     }
 
 }
