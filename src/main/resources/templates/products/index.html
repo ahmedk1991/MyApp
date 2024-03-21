@@ -38,7 +38,7 @@
             <td th:text="${game.price + 'Eur'}"></td>
             <td>
 
-                <img th:src="@{/img/{filename}(filename=${game.imageFileName})}" th:alt="${game.name}" style="width: 100px; height: auto;">
+                <img th:if="${game.imageFileName}" th:src="@{/img/{filename}(filename=${game.imageFileName})}" th:alt="${game.name}" style="width: 100px; height: auto;">
 
 
             </td>

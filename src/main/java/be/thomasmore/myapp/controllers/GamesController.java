@@ -11,8 +11,16 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-
+import javax.print.DocFlavor;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 
 
@@ -58,6 +66,7 @@ public class GamesController {
         game.setDescription(gamesDto.getDescription());
         game.setConsole(gamesDto.getDescription());
 
+
         gamesRepository.save(game);
         return "redirect:/products";
     }
@@ -90,7 +99,8 @@ public class GamesController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editGame(@Valid @ModelAttribute GamesDto gamesDto, BindingResult result, @PathVariable int id) {
+    public String editGame(@Valid @ModelAttribute GamesDto gamesDto, BindingResult result,
+                           @PathVariable int id) {
         if (result.hasErrors()) {
 
             return "products/editproduct";
@@ -106,6 +116,7 @@ public class GamesController {
                 game.setPrice(gamesDto.getPrice());
                 game.setDescription(gamesDto.getDescription());
                 game.setConsole(gamesDto.getConsole());
+                game.setImageFileName(uploadImage(gamesDto.getImageFile()));
 
                 gamesRepository.save(game);
 
@@ -137,6 +148,25 @@ public class GamesController {
         }
 
         return "products";
+    }
+
+    private String uploadImage(MultipartFile multipartFile) throws IOException {
+        if (multipartFile.isEmpty()) {
+            return null;
+        }
+
+        final String directoryPath = "src/main/resources/static/img/";
+        File directory = new File(directoryPath);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
+
+        String filename = multipartFile.getOriginalFilename();
+        Path path = Paths.get(directoryPath + filename);
+        Files.copy(multipartFile.getInputStream(), path);
+
+        return filename;
     }
 
 }

@@ -1,12 +1,9 @@
 package be.thomasmore.myapp.model;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.Date;
 
 public class GamesDto {
     @NotEmpty(message = "The name is required")
@@ -22,6 +19,8 @@ public class GamesDto {
     @Size(min=10,message = "The description should be at least 10 characters")
     @Size(max=500,message = "The description cannot exceed 500 characters")
     private String description;
+
+
 
     private MultipartFile imageFile;
 
