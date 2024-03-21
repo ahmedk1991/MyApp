@@ -13,6 +13,10 @@ public class GamesDto {
     private String name;
     @NotEmpty(message = "The name is required")
     private String category;
+
+
+    @NotEmpty(message = "The name is required")
+    private String console;
     @Min(0)
     private double price;
     @Size(min=10,message = "The description should be at least 10 characters")
@@ -63,4 +67,12 @@ public class GamesDto {
     public void setImageFile(MultipartFile imageFile) {
         this.imageFile = imageFile;
     }
+
+    public String getConsole() {
+        return console;
+    }
+    public void setConsole(String console) {
+        this.console = console;
+    }
+
 }

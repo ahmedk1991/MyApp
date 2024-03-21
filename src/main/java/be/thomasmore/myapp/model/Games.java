@@ -17,7 +17,7 @@ public class Games {
     @Column(length = 500)
     private String description;
 
-    private Date createdAt;
+    private String Console;
     private String imageFileName;
 
 
@@ -66,13 +66,6 @@ public class Games {
         this.description = description;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
 
     public String getImageFileName() {
         return imageFileName;
@@ -80,5 +73,13 @@ public class Games {
 
     public void setImageFileName(String imageFileName) {
         this.imageFileName = imageFileName;
+    }
+
+    public String getConsole() {
+        return Console;
+    }
+
+    public void setConsole(String console) {
+        Console = console;
     }
 }

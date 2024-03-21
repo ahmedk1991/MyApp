@@ -9,7 +9,7 @@
 </head>
 <body>
 
-
+<div th:replace="~{fragments/header :: header}">header</div>
 
 
  <div class="container">
@@ -25,7 +25,7 @@
             <th>Category</th>
             <th>Price</th>
             <th>Image</th>
-            <th>Created At</th>
+            <th>Console</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -42,7 +42,7 @@
 
 
             </td>
-            <td th:text="${game.createdAt}"></td>
+            <td th:text="${game.console}"></td>
 
             <td>
 

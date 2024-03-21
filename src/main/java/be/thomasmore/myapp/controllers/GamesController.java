@@ -42,7 +42,7 @@ public class GamesController {
 
     @PostMapping("/create")
     public String createProduct(Model model,@Valid @ModelAttribute GamesDto gamesDto,
-            BindingResult result) {
+                                BindingResult result) {
 
         if (gamesDto.getImageFile().isEmpty()) {
             result.addError(new FieldError("gamesDto", "imageFile", "The image file is required"));
@@ -56,6 +56,7 @@ public class GamesController {
         game.setCategory(gamesDto.getCategory());
         game.setPrice(gamesDto.getPrice());
         game.setDescription(gamesDto.getDescription());
+        game.setConsole(gamesDto.getDescription());
 
         gamesRepository.save(game);
         return "redirect:/products";
@@ -75,6 +76,7 @@ public class GamesController {
                 gamesDto.setPrice(game.getPrice());
                 gamesDto.setDescription(game.getDescription());
                 gamesDto.setImageFile(gamesDto.getImageFile());
+                gamesDto.setConsole(gamesDto.getConsole());
 
                 model.addAttribute("gamesDto", gamesDto);
                 return "products/editproduct";
@@ -103,6 +105,7 @@ public class GamesController {
                 game.setCategory(gamesDto.getCategory());
                 game.setPrice(gamesDto.getPrice());
                 game.setDescription(gamesDto.getDescription());
+                game.setConsole(gamesDto.getConsole());
 
                 gamesRepository.save(game);
 
@@ -137,4 +140,3 @@ public class GamesController {
     }
 
 }
-
