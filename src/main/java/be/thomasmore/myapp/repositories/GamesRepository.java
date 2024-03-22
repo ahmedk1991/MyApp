@@ -10,7 +10,7 @@ public interface GamesRepository extends CrudRepository <Games,Integer> {
 
     Optional<Games> findById(Integer id);
     List<Games>findByNameIsContainingIgnoreCase(String search);
-    List<Games>findByCategoryIsContainingIgnoreCase(String search);
+    List<Games>findByCategoryIsContainingIgnoreCase(String categoryName);
 
 
 }
