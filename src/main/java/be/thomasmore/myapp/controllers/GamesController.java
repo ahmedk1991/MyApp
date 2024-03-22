@@ -31,12 +31,18 @@ public class GamesController {
     private GamesRepository gamesRepository;
 
     @GetMapping({"", "/"})
-    public String showGamesList(Model model) {
+    public String showGamesList(Model model,@RequestParam(required = false) String search) {
 
-        Iterable<Games> allgames = gamesRepository.findAll();
+        Iterable<Games> allgames;
+        if(search!=null){
+            allgames=gamesRepository.findByNameIsContainingIgnoreCase(search);
+        }
+        else{
+            allgames=gamesRepository.findAll();
+        }
+
         model.addAttribute("allgames", allgames);
-
-        return "products/index";
+        return "products/gameslist";
     }
 
     @GetMapping("/create")

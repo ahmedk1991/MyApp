@@ -53,7 +53,7 @@ VALUES
     ('Half-Life', 'Shooter', 9.99, 'A science fiction first-person shooter with a compelling story, innovative gameplay, and a richly detailed world.', 'halflife_image.png', 'pc'),
     ('Heroes of Might and Magic', 'Adventure', 19.99, 'A strategy game series combining turn-based strategy with RPG elements, set in a fantasy world of might and magic.', 'heroesofmightandmagic_image.png', 'pc'),
     ('Mortal Kombat', 'Horror', 49.99, 'A brutal fighting game known for its gruesome fatalities, deep fighting mechanics, and extensive roster of characters.', 'mortalkombat_image.png', 'xbox'),
-    ('Pac-Man', 'Arcade', 4.99, 'The classic arcade game where players navigate Pac-Man through a maze, eating dots and avoiding ghosts.', 'pacman_image.png', 'nintendo'),
+    ('Pac-Man', 'Adventure', 4.99, 'The classic arcade game where players navigate Pac-Man through a maze, eating dots and avoiding ghosts.', 'pacman_image.png', 'nintendo'),
     ('PUBG', 'Survival', 29.99, 'One of the original Battle Royale games that offers intense matches with a focus on survival, strategy, and scavenging.', 'pubg_image.png', 'pc'),
     ('Red Dead Redemption', 'Action', 59.99, 'An open-world, western-themed action-adventure game with a strong narrative, expansive world, and deep gameplay mechanics.', 'reddeadredemption_image.png', 'xbox'),
     ('Stalker', 'Shooter', 19.99, 'A first-person shooter survival horror game set in the Chernobyl Exclusion Zone, filled with mutants, anomalies, and radiation.', 'stalker_image.png', 'pc'),
