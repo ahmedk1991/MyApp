@@ -2,6 +2,7 @@ package be.thomasmore.myapp.controllers;
 
 import be.thomasmore.myapp.model.Games;
 import be.thomasmore.myapp.repositories.GamesRepository;
+import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,17 +22,14 @@ public class CategoryController {
     @GetMapping({"/category"})
     public String showCategoryGames(Model model){
 
-        Iterable<Games> games=gamesRepository.findAll();
-        model.addAttribute("games",games);
-
-
         return "products/category";
     }
     @GetMapping("/listcategory/{categoryName}")
-    public String getGamesByCategory(@PathVariable String categoryName, Model model) {
+    public String getGamesByCategory(@PathVariable(required = false) String categoryName, Model model) {
         List<Games> games = gamesRepository.findByCategoryIsContainingIgnoreCase(categoryName);
         model.addAttribute("games", games);
-        model.addAttribute("categoryName",categoryName);
-        return "listcategory";
+
+        return "/products/listcategory";
     }
+
 }
