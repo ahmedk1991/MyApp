@@ -22,6 +22,9 @@ public class Games {
     private String imageFileName;
 
 
+
+    @Column(length = 300)
+    private String videoUrl;
     @ManyToMany
     private Collection<Reviews> reviews;
 
@@ -92,5 +95,12 @@ public class Games {
 
     public void setReviews(Collection<Reviews> reviews) {
         this.reviews = reviews;
+    }
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
     }
 }

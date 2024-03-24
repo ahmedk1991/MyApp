@@ -34,8 +34,13 @@ public class CategoryController {
     }
     @GetMapping("/gamedetails/{id}")
     public String getDetailsGame(@PathVariable(required = false)Integer id,Model model){
-
+        if(id==null) return "products/gamedetails";
         Optional<Games> game=gamesRepository.findById(id);
+
+            long count = game.get().getReviews().spliterator().estimateSize();
+
+
+        model.addAttribute("count",count);
         model.addAttribute("game",game);
 
         return "products/gamedetails";
