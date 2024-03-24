@@ -2,6 +2,7 @@ package be.thomasmore.myapp.model;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -21,11 +22,13 @@ public class Games {
     private String imageFileName;
 
 
-
+    @ManyToMany
+    private Collection<Reviews> reviews;
 
     public Games() {
 
     }
+
 
     public Long getId() {
         return id;
@@ -67,6 +70,13 @@ public class Games {
         this.description = description;
     }
 
+    public String getConsole() {
+        return Console;
+    }
+
+    public void setConsole(String console) {
+        Console = console;
+    }
 
     public String getImageFileName() {
         return imageFileName;
@@ -76,11 +86,11 @@ public class Games {
         this.imageFileName = imageFileName;
     }
 
-    public String getConsole() {
-        return Console;
+    public Collection<Reviews> getReviews() {
+        return reviews;
     }
 
-    public void setConsole(String console) {
-        Console = console;
+    public void setReviews(Collection<Reviews> reviews) {
+        this.reviews = reviews;
     }
 }
