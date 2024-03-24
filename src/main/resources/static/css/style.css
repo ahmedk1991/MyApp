@@ -19,12 +19,33 @@
     padding: 10px 20px;
 }
 .nav-item{
-    padding:4%;
+    padding:2%;
 
 }
+#carouselExampleCaptions {
+    max-width: 40%;
+    max-height:100%;
+    margin: auto;
+    justify-content: center;
+
+}
+
+.carousel-item img {
+    width: 50%;
+    height: 500px;
+    object-fit: cover;
+    border-radius:10px;
+}
+
+
+
+
+.span{
+    color:orange;
+}
 .navbar-nav .nav-link:hover {
-    color: #007bff; /* Change this color to whatever you prefer */
-    text-decoration: underline; /* Optional: adds an underline on hover */
+    color: #007bff;
+    text-decoration: underline;
 }
 
 
