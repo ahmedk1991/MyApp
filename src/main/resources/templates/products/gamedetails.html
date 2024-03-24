@@ -15,23 +15,22 @@
 <h1 th:text="${game.get().name}" class="centered-text">Game details</h1>
 
 
-<div class="row">
-    <div th:class="${game}" class="col-sm-8 mb-2 ">
-        <div class="card" style="margin:4%;">
-            <img th:src="@{/img/{image}(image=${game.get().imageFileName})}" class="card-img-top" alt="Game Image"
-                 th:alt="${game.get().name}">
-            <div class="card-body">
-                <h5 class="card-title" th:text="${game.get().name}">Game Name</h5>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="row">
+        <div class="col-sm-8 mb-2">
+            <div class="card" style="margin:4%;">
+                <img th:src="@{/img/{image}(image=${game.get().imageFileName})}" class="card-img-top" alt="Game Image" th:alt="${game.get().name}">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${game.get().name}">Game Name</h5>
+                </div>
+                <div class="video">
+                    <iframe width="560" height="315" th:src="${game.get().getVideoUrl()}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
             </div>
-            <div class="video">
-                <iframe width="560" height="315" th:src="${game.get().getVideoUrl()}"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-
         </div>
     </div>
+</div>
+
 </div>
 <div class="container">
     <div class="reviews" th:text="|reviews (${count})|"></div>

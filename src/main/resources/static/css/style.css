@@ -23,9 +23,7 @@
     padding:2%;
 
 }
-&body{
-    background-color: #0d1b50;
-}
+
 #carouselExampleCaptions {
     max-width: 40%;
     max-height:100%;
