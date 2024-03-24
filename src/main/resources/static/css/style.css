@@ -13,28 +13,37 @@
     margin:0%;
     max-width: 300px;
 
-
 }
 .btn-primary{
     width:25%;
     padding: 10px 20px;
 }
+.nav-item{
+    padding:4%;
+
+}
+.navbar-nav .nav-link:hover {
+    color: #007bff; /* Change this color to whatever you prefer */
+    text-decoration: underline; /* Optional: adds an underline on hover */
+}
+
+
 @media (min-width: 768px) {
     .card-img-top {
         max-width: 300px;
     }
 }
-
 @media (min-width: 992px)
 .card-img-top {
     max-width: 350px;
 
 }
 .card {
-
     display: flex;
     flex-direction: column;
-
-
+}
+.col{
+    border-bottom: 1px solid grey;
+    padding:1%;
 }
 

@@ -21,8 +21,7 @@
 
 <div class="row">
     <div th:each="game : ${games}" class="col-sm-4 mb-3">
-        <div class="card">
-            <!-- Assuming you have a way to resolve the image URL based on the game's information -->
+        <div class="card" style="margin:4%;">
             <img th:src="@{/img/{image}(image=${game.imageFileName})}" class="card-img-top" alt="Game Image" th:alt="${game.name}">
             <div class="card-body">
                 <h5 class="card-title" th:text="${game.name}">Game Name</h5>

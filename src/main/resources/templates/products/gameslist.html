@@ -12,53 +12,36 @@
 <div th:replace="~{fragments/header :: header}">header</div>
 
 
- <div class="container">
+<div class="container">
     <h1 class="text-center my-4">My games</h1>
-    <a class="btn btn-primary" href="/products/create">Create Games</a>
+    <a class="btn btn-primary" href="/products/create">Add Game +</a>
 
+    <div class="row mb-2">
+        <div class="col"><strong>ID</strong></div>
+        <div class="col"><strong>Name</strong></div>
+        <div class="col"><strong>Category</strong></div>
+        <div class="col"><strong>Price</strong></div>
+        <div class="col"><strong>Image</strong></div>
+        <div class="col"><strong>Console</strong></div>
+        <div class="col"><strong>Action</strong></div>
+    </div>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th>Console</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="game : ${allgames}">
-
-            <td th:text="${game.id}"></td>
-            <td th:text="${game.name}"></td>
-            <td th:text="${game.category}"></td>
-            <td th:text="${game.price + 'Eur'}"></td>
-            <td>
-
-                <img th:if="${game.imageFileName}" th:src="@{/img/{filename}(filename=${game.imageFileName})}" th:alt="${game.name}" style="width: 100px; height: auto;">
-
-
-            </td>
-            <td th:text="${game.console}"></td>
-
-            <td>
-
-
-                <a th:href="@{/products/edit/{id}(id=${game.id})}" class="btn btn-warning btn-sm">Edit</a>
-                <a th:href="@{/products/delete/{id}(id=${game.id})}" class="btn btn-danger btn-sm"
-                 onclick="return confirm('Are you sure you want to delete')">Delete</a>
-
-            </td>
-        </tr>
-        </tbody>
-
-    </table>
-
-
- </div>
+    <div th:each="game : ${allgames}" class="row mb-2">
+        <div class="col" th:text="${game.id}"></div>
+        <div class="col" th:text="${game.name}"></div>
+        <div class="col" th:text="${game.category}"></div>
+        <div class="col" th:text="${game.price + ' Eur'}"></div>
+        <div class="col">
+            <img th:if="${game.imageFileName}" th:src="@{/img/{filename}(filename=${game.imageFileName})}" th:alt="${game.name}" style="width: 100px; height: auto;">
+        </div>
+        <div class="col" th:text="${game.console}"></div>
+        <div class="col">
+            <a th:href="@{/products/edit/{id}(id=${game.id})}" class="btn btn-warning btn-sm">Edit</a>
+            <a th:href="@{/products/delete/{id}(id=${game.id})}" class="btn btn-danger btn-sm"
+               onclick="return confirm('Are you sure you want to delete')">Delete</a>
+        </div>
+    </div>
+</div>
 
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
