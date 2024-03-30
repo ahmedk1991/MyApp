@@ -55,27 +55,32 @@ public class CategoryController {
         return "products/gamedetails";
     }
     @PostMapping("/gamedetails/{id}")
-    public String addComment(@Valid @ModelAttribute("reviews") Reviews reviews, BindingResult result, @PathVariable(required = false) Integer id, Model model) {
-        if (result.hasErrors()) {
+    public String addComment(@PathVariable(required = false) Integer id,
+                             @ModelAttribute("reviews") Reviews formReviews,
+                             Model model) {
 
-            Optional<Games> gameOptional = gamesRepository.findById(id);
-            gameOptional.ifPresent(game -> model.addAttribute("game", game));
-            return "products/gamedetails";
+        if (id == null) {
+            return "redirect:/products/category";
         }
 
         Optional<Games> gameOptional = gamesRepository.findById(id);
         if (!gameOptional.isPresent()) {
-
             return "redirect:/products/category";
         }
 
-      
-        reviews.setName(reviews.getName());
-        reviews.setDate(new Date());
-        reviews.setReview(reviews.getReview());
-        reviewsRepository.save(reviews);
+        Games game = gameOptional.get();
+
+        Reviews review = new Reviews();
+        review.setName(formReviews.getName().trim());
+        review.setReview(formReviews.getReview().trim());
+        review.setDate(new Date());
+        reviewsRepository.save(review);
+
+        game.getReviews().add(review);
+        gamesRepository.save(game);
 
 
+        model.addAttribute("game", game);
 
         return "redirect:/products/gamedetails/" + id;
     }
