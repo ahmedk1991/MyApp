@@ -58,35 +58,35 @@ VALUES
     ('Red Dead Redemption', 'Action', 59.99, 'An open-world, western-themed action-adventure game with a strong narrative, expansive world, and deep gameplay mechanics.', 'reddeadredemption_image.png', 'xbox','https://www.youtube.com/embed/v_DucWo9-8c?si=CQUS5mNhpKv-N7Qz'),
     ('Stalker', 'Shooter', 19.99, 'A first-person shooter survival horror game set in the Chernobyl Exclusion Zone, filled with mutants, anomalies, and radiation.', 'stalker_image.png', 'pc','https://www.youtube.com/embed/0ZqMt74hO6U?si=M4K6-84cBo9si5Sb'),
     ('Scum', 'Survival', 34.99, 'A survival game known for its detailed metabolism simulator, massive open world, and intense player interactions.', 'scum_image.png', 'pc','https://www.youtube.com/embed/jvhfBq54M6w?si=WgNyxQjEuqCw-d_P'),
-    ('Starcraft', 'Survival', 14.99, 'A landmark real-time strategy game known for its compelling story, deep strategic gameplay','war_craft.png','xbox','https://www.youtube.com/embed/c2vm-QjK2xQ?si=AK_UzSf6Q7FFP9Ox');
+    ('Warcraft', 'Survival', 14.99, 'A landmark real-time strategy game known for its compelling story, deep strategic gameplay','war_craft.png','xbox','https://www.youtube.com/embed/c2vm-QjK2xQ?si=AK_UzSf6Q7FFP9Ox');
 
 
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('1', 'Absolutely thrilling experience!', CURRENT_TIMESTAMP, 'Alex');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('2', 'A masterpiece of storytelling.', CURRENT_TIMESTAMP, 'Jordan');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('3', 'Incredibly immersive world.', CURRENT_TIMESTAMP, 'Taylor');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('4', 'Had me on the edge of my seat!', CURRENT_TIMESTAMP, 'Casey');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('5', 'The graphics are breathtaking.', CURRENT_TIMESTAMP, 'Jamie');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('6', 'Superb gameplay mechanics.', CURRENT_TIMESTAMP, 'Morgan');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('7', 'Very engaging from start to finish.', CURRENT_TIMESTAMP, 'Charlie');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('8', 'Could use more content updates.', CURRENT_TIMESTAMP, 'Drew');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('9', 'A bit repetitive over time.', CURRENT_TIMESTAMP, 'Pat');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('10', 'Great for short, fun sessions.', CURRENT_TIMESTAMP, 'Sam');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('11', 'The multiplayer mode is fantastic.', CURRENT_TIMESTAMP, 'Alexis');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('12', 'Sound design is top-notch.', CURRENT_TIMESTAMP, 'Taylor');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('13', 'Story is engaging and deep.', CURRENT_TIMESTAMP, 'Jordan');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('14', 'A true classic in its genre.', CURRENT_TIMESTAMP, 'Morgan');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('15', 'Puzzle elements are quite challenging.', CURRENT_TIMESTAMP, 'Casey');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('16', 'Perfect game for strategy lovers.', CURRENT_TIMESTAMP, 'Charlie');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('17', 'Controls feel a bit clunky.', CURRENT_TIMESTAMP, 'Drew');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('18', 'The art style is unique and appealing.', CURRENT_TIMESTAMP, 'Pat');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('19', 'Character development is excellent.', CURRENT_TIMESTAMP, 'Jamie');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('20', 'Level design is ingenious.', CURRENT_TIMESTAMP, 'Sam');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('21', 'AI opponents are quite smart.', CURRENT_TIMESTAMP, 'Alexis');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('22', 'Enjoyable for both kids and adults.', CURRENT_TIMESTAMP, 'Alex');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('23', 'A bit short but sweet.', CURRENT_TIMESTAMP, 'Taylor');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('24', 'DLCs add a lot of value.', CURRENT_TIMESTAMP, 'Jordan');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('25', 'The community is very active and helpful.', CURRENT_TIMESTAMP, 'Morgan');
-INSERT INTO REVIEWS (ID, REVIEW, DATE, NAME) VALUES ('26', 'Runs smoothly on mid-range hardware.', CURRENT_TIMESTAMP, 'Casey');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Absolutely thrilling experience!', CURRENT_TIMESTAMP, 'Alex');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'A masterpiece of storytelling.', CURRENT_TIMESTAMP, 'Jordan');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Incredibly immersive world.', CURRENT_TIMESTAMP, 'Taylor');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Had me on the edge of my seat!', CURRENT_TIMESTAMP, 'Casey');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'The graphics are breathtaking.', CURRENT_TIMESTAMP, 'Jamie');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Superb gameplay mechanics.', CURRENT_TIMESTAMP, 'Morgan');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Very engaging from start to finish.', CURRENT_TIMESTAMP, 'Charlie');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Could use more content updates.', CURRENT_TIMESTAMP, 'Drew');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'A bit repetitive over time.', CURRENT_TIMESTAMP, 'Pat');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Great for short, fun sessions.', CURRENT_TIMESTAMP, 'Sam');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'The multiplayer mode is fantastic.', CURRENT_TIMESTAMP, 'Alexis');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Sound design is top-notch.', CURRENT_TIMESTAMP, 'Taylor');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ('Story is engaging and deep.', CURRENT_TIMESTAMP, 'Jordan');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'A true classic in its genre.', CURRENT_TIMESTAMP, 'Morgan');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Puzzle elements are quite challenging.', CURRENT_TIMESTAMP, 'Casey');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Perfect game for strategy lovers.', CURRENT_TIMESTAMP, 'Charlie');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Controls feel a bit clunky.', CURRENT_TIMESTAMP, 'Drew');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'The art style is unique and appealing.', CURRENT_TIMESTAMP, 'Pat');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Character development is excellent.', CURRENT_TIMESTAMP, 'Jamie');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Level design is ingenious.', CURRENT_TIMESTAMP, 'Sam');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'AI opponents are quite smart.', CURRENT_TIMESTAMP, 'Alexis');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Enjoyable for both kids and adults.', CURRENT_TIMESTAMP, 'Alex');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'A bit short but sweet.', CURRENT_TIMESTAMP, 'Taylor');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ('DLCs add a lot of value.', CURRENT_TIMESTAMP, 'Jordan');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'The community is very active and helpful.', CURRENT_TIMESTAMP, 'Morgan');
+INSERT INTO REVIEWS ( REVIEW, DATE, NAME) VALUES ( 'Runs smoothly on mid-range hardware.', CURRENT_TIMESTAMP, 'Casey');
 
 
 INSERT INTO GAMES_REVIEWS (REVIEWS_ID,GAMES_ID)VALUES(1,1);

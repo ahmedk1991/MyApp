@@ -1,6 +1,8 @@
 package be.thomasmore.myapp.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import jdk.jfr.Timestamp;
 
 import java.util.Collection;
@@ -9,12 +11,13 @@ import java.util.Date;
 @Entity
 public class Reviews {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(length = 500)
+
     private String review;
     @Timestamp
     private Date date;
-
+//    @NotEmpty(message = "The name is required")
     private String name;
 
 
