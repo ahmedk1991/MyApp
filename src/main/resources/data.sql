@@ -127,6 +127,29 @@ INSERT INTO GAMES_REVIEWS (REVIEWS_ID,GAMES_ID)VALUES(24,24);
 INSERT INTO GAMES_REVIEWS (REVIEWS_ID,GAMES_ID)VALUES(25,25);
 INSERT INTO GAMES_REVIEWS (REVIEWS_ID,GAMES_ID)VALUES(26,26);
 
+INSERT INTO MEMBERS(NAME,POST,IMAGE_FILE_NAME,DATE)
+VALUES ('John','
+"Just finished playing ''Quest of Legends'' and I''m blown away by the immersive storyline and stunning graphics! Can''t wait to dive back in and discover more of its mystical world.','1_image.jpg',CURRENT_DATE );
+INSERT INTO MEMBERS (NAME, POST, IMAGE_FILE_NAME, DATE)
+VALUES ('rudy', 'Just conquered the final boss in ''Shadows Beyond''! What an adrenaline rush! #GamerLife ', '2_image.jpg', CURRENT_DATE);
+
+INSERT INTO MEMBERS (NAME, POST, IMAGE_FILE_NAME, DATE)
+VALUES ('filip', 'Spent the whole day exploring the post-apocalyptic world of ''Last Stand Earth'' - such a thrilling adventure! #GamingCommunity ', '3_image.jpg', CURRENT_DATE);
+
+INSERT INTO MEMBERS (NAME, POST, IMAGE_FILE_NAME, DATE)
+VALUES ('Michael', 'Had an epic multiplayer battle session in ''Blitz Assault'' with friends - intense and exhilarating! #GamingFun ', '4_image.jpg', CURRENT_DATE);
+
+INSERT INTO MEMBERS (NAME, POST, IMAGE_FILE_NAME, DATE)
+VALUES ('Sarah', 'Embarked on a quest in ''Mystical Realms'' and was captivated by its enchanting landscapes and intriguing quests! #FantasyGaming ', '5_image.jpg', CURRENT_DATE);
+
+INSERT INTO MEMBERS (NAME, POST, IMAGE_FILE_NAME, DATE)
+VALUES ('David', 'Reached a new high score in ''Galactic Conquest'' - feeling like a true space conqueror! #ArcadeGaming', '6_image.jpg', CURRENT_DATE);
+
+INSERT INTO MEMBERS (NAME, POST, IMAGE_FILE_NAME, DATE)
+VALUES ('Sophia', 'Joined forces with fellow gamers for an epic raid in ''Rise of Titans'' - teamwork makes the dream work!  #MMORPG', '7_image.jpg', CURRENT_DATE);
+
+
+
 
 
 

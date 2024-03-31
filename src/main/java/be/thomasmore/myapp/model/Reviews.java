@@ -17,7 +17,7 @@ public class Reviews {
     private String review;
     @Timestamp
     private Date date;
-//    @NotEmpty(message = "The name is required")
+
     private String name;
 
 
