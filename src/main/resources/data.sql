@@ -1,5 +1,5 @@
 insert into Games( NAME, CATEGORY, PRICE, DESCRIPTION, IMAGE_FILE_NAME,CONSOLE,VIDEO_URL)
-values ( 'doom', 'Horror', 50,
+values ( 'Doom', 'Horror', 50,
         '"doom" is a pioneering first-person shooter game that pits players against demons in a high-octane battle for survival. Launched in 1993,'
             ' it''s celebrated for revolutionizing the genre with its intense gameplay and graphics.', 'doom_image.png','pc','https://www.youtube.com/embed/Ienu85W5Rkk?si=bZi8tjbqesdhI0gQ');
 insert into Games( NAME, CATEGORY, PRICE, DESCRIPTION, IMAGE_FILE_NAME,CONSOLE,VIDEO_URL)
@@ -131,10 +131,10 @@ INSERT INTO MEMBERS(NAME,POST,IMAGE_FILE_NAME,DATE)
 VALUES ('John','
 "Just finished playing ''Quest of Legends'' and I''m blown away by the immersive storyline and stunning graphics! Can''t wait to dive back in and discover more of its mystical world.','1_image.jpg',CURRENT_DATE );
 INSERT INTO MEMBERS (NAME, POST, IMAGE_FILE_NAME, DATE)
-VALUES ('rudy', 'Just conquered the final boss in ''Shadows Beyond''! What an adrenaline rush! #GamerLife ', '2_image.jpg', CURRENT_DATE);
+VALUES ('Rudy', 'Just conquered the final boss in ''Shadows Beyond''! What an adrenaline rush! #GamerLife ', '2_image.jpg', CURRENT_DATE);
 
 INSERT INTO MEMBERS (NAME, POST, IMAGE_FILE_NAME, DATE)
-VALUES ('filip', 'Spent the whole day exploring the post-apocalyptic world of ''Last Stand Earth'' - such a thrilling adventure! #GamingCommunity ', '3_image.jpg', CURRENT_DATE);
+VALUES ('Filip', 'Spent the whole day exploring the post-apocalyptic world of ''Last Stand Earth'' - such a thrilling adventure! #GamingCommunity ', '3_image.jpg', CURRENT_DATE);
 
 INSERT INTO MEMBERS (NAME, POST, IMAGE_FILE_NAME, DATE)
 VALUES ('Michael', 'Had an epic multiplayer battle session in ''Blitz Assault'' with friends - intense and exhilarating! #GamingFun ', '4_image.jpg', CURRENT_DATE);

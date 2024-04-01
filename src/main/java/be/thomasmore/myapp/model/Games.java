@@ -18,7 +18,7 @@ public class Games {
     @Column(length = 500)
     private String description;
 
-    private String Console;
+    private String console;
     private String imageFileName;
 
 
@@ -74,11 +74,11 @@ public class Games {
     }
 
     public String getConsole() {
-        return Console;
+        return console;
     }
 
     public void setConsole(String console) {
-        Console = console;
+        this.console = console;
     }
 
     public String getImageFileName() {

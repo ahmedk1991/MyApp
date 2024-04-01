@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -31,14 +32,13 @@ public class GamesController {
     private GamesRepository gamesRepository;
 
     @GetMapping({"", "/"})
-    public String showGamesList(Model model,@RequestParam(required = false) String search) {
+    public String showGamesList(Model model, @RequestParam(required = false) String search) {
 
         Iterable<Games> allgames;
-        if(search!=null){
-            allgames=gamesRepository.findByNameIsContainingIgnoreCase(search);
-        }
-        else{
-            allgames=gamesRepository.findAll();
+        if (search != null) {
+            allgames = gamesRepository.findByNameIsContainingIgnoreCase(search);
+        } else {
+            allgames = gamesRepository.findAll();
         }
         model.addAttribute("allgames", allgames);
         return "products/gameslist";
@@ -54,7 +54,7 @@ public class GamesController {
 
 
     @PostMapping("/create")
-    public String createProduct(Model model,@Valid @ModelAttribute GamesDto gamesDto,
+    public String createProduct(Model model, @Valid @ModelAttribute GamesDto gamesDto,
                                 BindingResult result) {
 
         if (gamesDto.getImageFile().isEmpty()) {
@@ -64,7 +64,7 @@ public class GamesController {
             return "products/createproduct";
         }
 
-        Games game=new Games();
+        Games game = new Games();
         game.setName(gamesDto.getName());
         game.setCategory(gamesDto.getCategory());
         game.setPrice(gamesDto.getPrice());
@@ -174,4 +174,30 @@ public class GamesController {
         return filename;
     }
 
+    @GetMapping({"/"})
+    public String indexListFilter(Model model,
+                                  @RequestParam(required = false) Integer minPrice,
+                                  @RequestParam(required = false) Integer maxPrice,
+                                  @RequestParam(required = false) String category,
+                                  @RequestParam(required = false) String console) {
+
+
+        final Iterable<Games> allGames;
+
+
+        if (minPrice != null || maxPrice != null || category != null || console != null) {
+            List<Games> filteredGames = gamesRepository.findByFilter(minPrice, maxPrice, category, console);
+            model.addAttribute("allgames", filteredGames);
+        } else {
+            allGames=gamesRepository.findAll();
+            model.addAttribute("allgames", allGames);
+        }
+
+        model.addAttribute("minPrice", minPrice);
+        model.addAttribute("maxPrice", maxPrice);
+        model.addAttribute("console", console);
+        model.addAttribute("category", category);
+
+        return "index";
+    }
 }

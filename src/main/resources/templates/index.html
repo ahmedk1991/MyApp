@@ -8,26 +8,23 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 </head>
-
+<body>
 
 <div th:replace="~{fragments/header :: header}">header</div>
 
-
-
-
-
-
 <div id="carouselExampleCaptions" class="carousel" data-bs-ride="carousel">
-
-
     <div class="container">
-        <h1 class="text-center my-4">Welcome to <span>Gameheaven</span></h1>
+        <h1 class="text-center my-4">Welcome to <span class="text-info">Gameheaven</span></h1>
     </div>
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -70,10 +67,118 @@
 </div>
 <div class="background-div">
     <img th:src="@{/img/community_image.jpg}">
-
 </div>
 
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Catalog Page</h2>
+                <p>Search for your favorite game</p>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="d-none d-md-block">
+                            <div class="filters">
+                                <form>
+                                    <div class="filter-item">
+                                        <h3>Price Range</h3>
+                                        <div class="form-group">
+                                            <label for="minPrice">From:</label>
+                                            <input type="number" class="form-control" id="minPrice" name="minPrice"
+                                                   placeholder="Min Price" th:value="${minPrice}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="maxPrice">To:</label>
+                                            <input type="number" class="form-control" id="maxPrice" name="maxPrice"
+                                                   placeholder="Max Price" th:value="${maxPrice}">
+                                        </div>
+                                    </div>
 
+                                    <div class="filter-item">
+                                        <h3>Categories</h3>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="horror" name="category"
+                                                   value="Horror" th:checked="${category == 'Horror'}">
+                                            <label class="form-check-label" for="horror">Horror</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="adventure"
+                                                   name="category" value="Adventure"
+                                                   th:checked="${category == 'Adventure'}">
+                                            <label class="form-check-label" for="adventure">Adventure</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="shooter" name="category"
+                                                   value="shooter" th:checked="${category == 'Shooter'}">
+                                            <label class="form-check-label" for="adventure">Shooter</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="survival"
+                                                   name="category" value="survival"
+                                                   th:checked="${category == 'Survival'}">
+                                            <label class="form-check-label" for="adventure">Survival</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="action" name="category"
+                                                   value="action" th:checked="${category == 'Action'}">
+                                            <label class="form-check-label" for="adventure">Action</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="filter-item">
+                                        <h3>Console</h3>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="pc" name="console"
+                                                   value="pc" th:checked="${console == 'pc'}">
+                                            <label class="form-check-label" for="pc">PC</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="xbox" name="console"
+                                                   value="xbox" th:checked="${console == 'xbox'}">
+                                            <label class="form-check-label" for="xbox">Xbox</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="ps5" name="console"
+                                                   value="ps5" th:checked="${console == 'ps5'}">
+                                            <label class="form-check-label" for="xbox">Nintendo</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="nintendo" name="console"
+                                                   value="nintendo" th:checked="${console == 'nintendo'}">
+                                            <label class="form-check-label" for="xbox">Xbox</label>
+                                        </div>
+
+                                    </div>
+                                    <input class="input" type="submit" value="Search">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="products">
+                            <div class="row g-0">
+                                <div class="col-12 col-md-6 col-lg-4" th:each="game:${allgames}">
+                                    <div class="card">
+                                        <img th:src="@{/img/{filename}(filename=${game.imageFileName})}"
+                                             class="card-img-top" alt="Product Image">
+                                        <div class="card-body">
+                                            <h5 th:text="${game.name}" class="card-title"></h5>
+                                            <div class="rating"><img src="star.svg"/><img/></div>
+                                            <p th:text="${game.price}" class="card-text"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -48,7 +48,7 @@
 
 
 <div class="container">
-    <h4 class="reviews" th:text="|reviews (${count})|"></h4>
+    <div class="reviews" th:text="|reviews (${count})|"></div>
     <div th:each=" review: ${game.get().getReviews()}">
         <div class="card">
             <div class="card-body">
@@ -108,6 +108,7 @@
                 </div>
             </div>
         </div>
+
 
 
 

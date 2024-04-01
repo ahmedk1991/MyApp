@@ -16,13 +16,16 @@
 
 }
 .btn-primary{
-    width:100px;
+    width:45%;
     padding: 10px 20px;
     margin-top:10px;
 }
 .nav-item{
     padding:2%;
 
+}
+.input{
+    margin-bottom: 20%;
 }
 
 #carouselExampleCaptions {
@@ -63,22 +66,10 @@
         text-decoration: underline;
     }
 
-
-    @media (min-width: 768px) {
-        .card-img-top {
-            max-width: 300px;
-        }
-    }
-    @media (min-width: 992px)
-
-    .card-img-top {
-        max-width: 350px;
-
-    }
-
     .card {
         display: flex;
         flex-direction: column;
+        box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .col {
@@ -123,6 +114,13 @@ body{
 
     margin-top:10%;
     margin-left:5%;
+}
+.catalog-page{
+    background-color:white;
+    margin-top:5%;
+}
+.filter-item{
+    margin-bottom: 10%;
 }
 
 .quote.dark blockquote {
