@@ -7,7 +7,7 @@ VALUES ( 'Minecraft', 'Adventure', 26.95,
         '"Minecraft offers endless possibilities in a sandbox environment where players can build, explore, and survive in a blocky, procedurally generated 3D world. Launched in 2011,' ||
         ' it''s become a phenomenon for its creative freedom and community-driven content."', 'minecraft_image.png','pc','https://www.youtube.com/embed/EB0A8m2hxrg?si=uLCTh1MSd7ylW-rq');
 insert into Games( NAME, CATEGORY, PRICE, DESCRIPTION, IMAGE_FILE_NAME,CONSOLE,VIDEO_URL)
-VALUES ( 'The Legend of Zelda: Breath of the Wild', 'Adventure', 59.99,
+VALUES ( 'The Legend of Zelda ', 'Adventure', 59.99,
         '"Breath of the Wild redefines open-world exploration in the iconic Zelda series, offering unparalleled freedom and a breathtaking world. Released in 2017,' ||
         ' it''s acclaimed for its innovative gameplay and immersive environment."',
         'zelda_image.jpeg','ps5','https://www.youtube.com/embed/PltrSuUIGFY?si=RFMi1PUocQ4q8ZVZ');

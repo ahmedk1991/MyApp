@@ -174,30 +174,5 @@ public class GamesController {
         return filename;
     }
 
-    @GetMapping({"/"})
-    public String indexListFilter(Model model,
-                                  @RequestParam(required = false) Integer minPrice,
-                                  @RequestParam(required = false) Integer maxPrice,
-                                  @RequestParam(required = false) String category,
-                                  @RequestParam(required = false) String console) {
 
-
-        final Iterable<Games> allGames;
-
-
-        if (minPrice != null || maxPrice != null || category != null || console != null) {
-            List<Games> filteredGames = gamesRepository.findByFilter(minPrice, maxPrice, category, console);
-            model.addAttribute("allgames", filteredGames);
-        } else {
-            allGames=gamesRepository.findAll();
-            model.addAttribute("allgames", allGames);
-        }
-
-        model.addAttribute("minPrice", minPrice);
-        model.addAttribute("maxPrice", maxPrice);
-        model.addAttribute("console", console);
-        model.addAttribute("category", category);
-
-        return "index";
-    }
 }
