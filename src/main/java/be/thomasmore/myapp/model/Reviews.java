@@ -12,7 +12,7 @@ import java.util.Date;
 public class Reviews {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     private String review;
     @Timestamp
@@ -28,11 +28,11 @@ public class Reviews {
     }
 
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

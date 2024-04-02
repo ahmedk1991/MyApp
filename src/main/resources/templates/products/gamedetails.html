@@ -48,7 +48,7 @@
 
 
 <div class="container">
-    <div class="reviews" th:text="|reviews (${count})|"></div>
+    <div class="reviews" th:text="|Reviews (${count})|"></div>
     <div th:each=" review: ${game.get().getReviews()}">
         <div class="card">
             <div class="card-body">
@@ -67,11 +67,14 @@
                         <div class="clearfix"></div>
                         <p th:text="${review.review}"></p>
                         <p>
-                            <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
-                            <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                        <div class="col">
+
+                        <a th:href="@{/products/deletecomment/{gameId}/{reviewId}(gameId=${game.get().id}, reviewId=${review.id})}"
+                           class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete')">Delete</a>
+
+                    </div>
                         </p>
                     </div>
-
                 </div>
             </div>
         </div>

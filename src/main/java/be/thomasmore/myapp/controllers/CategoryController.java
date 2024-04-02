@@ -26,10 +26,11 @@ public class CategoryController {
     private ReviewsRepository reviewsRepository;
 
     @GetMapping({"/category"})
-    public String showCategoryGames(Model model){
+    public String showCategoryGames(Model model) {
 
         return "products/category";
     }
+
     @GetMapping("/listcategory/{categoryName}")
     public String getGamesByCategory(@PathVariable(required = false) String categoryName, Model model) {
         List<Games> games = gamesRepository.findByCategoryIsContainingIgnoreCase(categoryName);
@@ -37,27 +38,26 @@ public class CategoryController {
 
         return "/products/listcategory";
     }
+
     @GetMapping("/gamedetails/{id}")
-    public String getDetailsGame(@PathVariable(required = false)Integer id,Model model){
-        if(id==null) return "products/gamedetails";
-        Optional<Games> game=gamesRepository.findById(id);
-
-
+    public String getDetailsGame(@PathVariable(required = false) Integer id, Model model) {
+        if (id == null) return "products/gamedetails";
+        Optional<Games> game = gamesRepository.findById(id);
 
 
         long count = game.get().getReviews().spliterator().estimateSize();
 
         Reviews reviews = new Reviews();
-        model.addAttribute("count",count);
+        model.addAttribute("count", count);
         model.addAttribute("game", game);
-        model.addAttribute("reviews",reviews);
+        model.addAttribute("reviews", reviews);
+
 
         return "products/gamedetails";
     }
+
     @PostMapping("/gamedetails/{id}")
-    public String addComment(@PathVariable(required = false) Integer id,
-                             @ModelAttribute("reviews") Reviews formReviews,
-                             Model model) {
+    public String addComment(@PathVariable(required = false) Integer id, @ModelAttribute("reviews") Reviews formReviews, Model model) {
 
         if (id == null) {
             return "redirect:/products/category";
@@ -84,4 +84,31 @@ public class CategoryController {
 
         return "redirect:/products/gamedetails/" + id;
     }
+
+
+    @GetMapping("/deletecomment/{gameId}/{reviewId}")
+    public String deleteComment(@PathVariable int gameId, @PathVariable int reviewId) {
+        Optional<Games> gamesOptional = gamesRepository.findById(gameId);
+
+        if (gamesOptional.isPresent()) {
+            Games game = gamesOptional.get();
+            Collection<Reviews> reviews = game.getReviews();
+            Iterator<Reviews> iterator = reviews.iterator();
+
+            while (iterator.hasNext()) {
+                Reviews review = iterator.next();
+                if (review.getId() == reviewId) {
+                    iterator.remove();
+                    break;
+                }
+            }
+
+            gamesRepository.save(game);
+
+            return "redirect:/products/gamedetails/" +gameId;
+        }
+        return "products/gamedetails";
+    }
+
+
 }

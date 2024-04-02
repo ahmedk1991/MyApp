@@ -17,7 +17,7 @@ VALUES ( 'Dark Souls', 'Horror', 39.99,
         ' it has captivated players with its emphasis on exploration and player skill."', 'darksouls_image.png','nintendo','https://www.youtube.com/embed/_zDZYrIUgKE?si=2ChGKJYaLP6uEhID');
 
 insert into Games( NAME, CATEGORY, PRICE, DESCRIPTION, IMAGE_FILE_NAME,CONSOLE,VIDEO_URL)
-VALUES ( 'The Witcher 3: Wild Hunt', 'Horror', 49.99,
+VALUES ( 'The Witcher 3', 'Horror', 49.99,
         '"The Witcher 3: Wild Hunt is celebrated for its rich storytelling, expansive open world, and deep cdharacter development. Released in 2015,' ||
         ' it''s praised as one of the greatest RPGs of all time for its narrative depth and world-building."',
         'witcher_image.png','nintendo','https://www.youtube.com/embed/2uYouPnUETI?si=fKwFFjSTxGNMFOBW');
@@ -35,7 +35,7 @@ VALUES ( 'The last of us  ', 'Horror', 5,
         ' it has surged in popularity, becoming a hit for its engaging mechanics and party game atmosphere."',
         'thelastofus_image.png','ps5','https://www.youtube.com/embed/8SWhBsbxmpk?si=luQFC_yap6P95HU1');
 insert into Games( NAME, CATEGORY, PRICE, DESCRIPTION, IMAGE_FILE_NAME,CONSOLE,VIDEO_URL)
-VALUES ( 'Animal Crossing: New Horizons', 'Adventure', 59.99,
+VALUES ( 'New Horizons', 'Adventure', 59.99,
         '"Animal Crossing: New Horizons offers a relaxing escape to a personalized island paradise with charming characters and creative freedom. Released in 2020,' ||
         ' it has become a cultural phenomenon for its cozy gameplay and community aspect."',
         'horizons_image.png','xbox','https://www.youtube.com/embed/_3YNL0OWio0?si=V-DPi-egD8n2jIlL');
@@ -122,7 +122,7 @@ INSERT INTO GAMES_REVIEWS (REVIEWS_ID,GAMES_ID)VALUES(5,21);
 INSERT INTO GAMES_REVIEWS (REVIEWS_ID,GAMES_ID)VALUES(8,21);
 INSERT INTO GAMES_REVIEWS (REVIEWS_ID,GAMES_ID)VALUES(22,22);
 INSERT INTO GAMES_REVIEWS (REVIEWS_ID,GAMES_ID)VALUES(16,22);
-INSERT INTO GAMES_REVIEWS (REVIEWS_ID,GAMES_ID)VALUES(23,23);
+INSERT INTO GAMES_REVIEWS (REVIEWS_ID,GAMES_ID)VALUES(25,23);
 INSERT INTO GAMES_REVIEWS (REVIEWS_ID,GAMES_ID)VALUES(24,24);
 INSERT INTO GAMES_REVIEWS (REVIEWS_ID,GAMES_ID)VALUES(25,25);
 INSERT INTO GAMES_REVIEWS (REVIEWS_ID,GAMES_ID)VALUES(26,26);

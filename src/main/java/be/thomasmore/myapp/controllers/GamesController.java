@@ -54,8 +54,7 @@ public class GamesController {
 
 
     @PostMapping("/create")
-    public String createProduct(Model model, @Valid @ModelAttribute GamesDto gamesDto,
-                                BindingResult result) {
+    public String createProduct(Model model, @Valid @ModelAttribute GamesDto gamesDto, BindingResult result) throws IOException {
 
         if (gamesDto.getImageFile().isEmpty()) {
             result.addError(new FieldError("gamesDto", "imageFile", "The image file is required"));
@@ -70,6 +69,11 @@ public class GamesController {
         game.setPrice(gamesDto.getPrice());
         game.setDescription(gamesDto.getDescription());
         game.setConsole(gamesDto.getDescription());
+        try {
+            game.setImageFileName(uploadImage(gamesDto.getImageFile()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
         gamesRepository.save(game);
@@ -104,8 +108,7 @@ public class GamesController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editGame(@Valid @ModelAttribute GamesDto gamesDto, BindingResult result,
-                           @PathVariable int id) {
+    public String editGame(@Valid @ModelAttribute GamesDto gamesDto, BindingResult result, @PathVariable int id) {
         if (result.hasErrors()) {
 
             return "products/editproduct";
@@ -143,9 +146,11 @@ public class GamesController {
 
         Optional<Games> gameOptional = gamesRepository.findById(id);
 
+
         if (gameOptional.isPresent()) {
 
             Games game = gameOptional.get();
+
             model.addAttribute("game", game);
             gamesRepository.delete(game);
 

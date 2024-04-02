@@ -1,6 +1,7 @@
 package be.thomasmore.myapp.repositories;
 
 import be.thomasmore.myapp.model.Games;
+import be.thomasmore.myapp.model.Reviews;
 import jdk.jfr.Category;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -26,6 +27,10 @@ public interface GamesRepository extends CrudRepository <Games,Integer> {
     List<Games>findByCategoryIsContainingIgnoreCase(String categoryName);
     @Query("SELECT DISTINCT g.category FROM Games g")
     List<String> findDistinctCategories();
+
+
+
+
 
 
 }
