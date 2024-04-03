@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Optional;
 
-public interface GamesRepository extends CrudRepository <Games,Integer> {
+public interface GamesRepository extends CrudRepository<Games, Integer> {
 
     @Query("SELECT g FROM Games g WHERE " +
             "(:minPrice IS NULL OR g.price >= :minPrice) AND " +
@@ -20,17 +20,25 @@ public interface GamesRepository extends CrudRepository <Games,Integer> {
     List<Games> findByFilter(@Param("minPrice") Integer minPrice,
                              @Param("maxPrice") Integer maxPrice,
                              @Param("category") String category,
-                             @Param("console")  String console);
-    Optional<Games> findById(Integer id);
-    List<Games>findByNameIsContainingIgnoreCase(String search);
+                             @Param("console") String console);
 
-    List<Games>findByCategoryIsContainingIgnoreCase(String categoryName);
+    Optional<Games> findById(Integer id);
+
+    List<Games> findByNameIsContainingIgnoreCase(String search);
+
+    List<Games> findByCategoryIsContainingIgnoreCase(String categoryName);
+
     @Query("SELECT DISTINCT g.category FROM Games g")
     List<String> findDistinctCategories();
 
 
+    Optional<Games> findFirstByCategoryAndIdGreaterThanOrderByIdAsc(String category, Integer id);
 
+    Optional<Games> findFirstByCategoryAndIdOrderByIdAsc(String category, Integer id);
 
+    Optional<Games> findFirstByCategoryAndIdLessThanOrderByIdDesc(String category, Integer id);
+
+    Optional<Games> findFirstByCategoryAndIdOrderByIdDesc(String category, Integer id);
 
 
 }

@@ -163,6 +163,35 @@ body{
     z-index:-1;
 
 }
+.prevButtonDiv {
+    position: fixed;
+    left: 10px;
+    bottom: 50%;
+}
+
+.nextButtonDiv {
+    position: fixed;
+    right: 10px;
+    bottom: 50%;
+}
+
+.buttonLook {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: lightskyblue;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.buttonLook:hover {
+    background-color: lightblue;
+}
+
 
 
 

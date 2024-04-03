@@ -42,19 +42,39 @@ public class CategoryController {
     @GetMapping("/gamedetails/{id}")
     public String getDetailsGame(@PathVariable(required = false) Integer id, Model model) {
         if (id == null) return "products/gamedetails";
+
         Optional<Games> game = gamesRepository.findById(id);
 
+        if (!game.isPresent()) {
 
-        long count = game.get().getReviews().spliterator().estimateSize();
+            return "products/gamedetails";
+        }
 
+        Games currentGame = game.get();
+        String genre = currentGame.getCategory();
+
+        Optional<Games> nextGame = gamesRepository.findFirstByCategoryAndIdGreaterThanOrderByIdAsc(genre, id);
+        if (nextGame.isEmpty()) {
+            nextGame = gamesRepository.findFirstByCategoryAndIdGreaterThanOrderByIdAsc(genre, id);
+        }
+
+        Optional<Games> prevGame = gamesRepository.findFirstByCategoryAndIdLessThanOrderByIdDesc(genre, id);
+        if (prevGame.isEmpty()) {
+            prevGame =gamesRepository.findFirstByCategoryAndIdLessThanOrderByIdDesc(genre, id);
+        }
+
+        long count = currentGame.getReviews().size();
         Reviews reviews = new Reviews();
+
+        model.addAttribute("nextGame", nextGame.get().getId());
+        model.addAttribute("prevGame", prevGame.get().getId());
         model.addAttribute("count", count);
         model.addAttribute("game", game);
         model.addAttribute("reviews", reviews);
 
-
         return "products/gamedetails";
     }
+
 
     @PostMapping("/gamedetails/{id}")
     public String addComment(@PathVariable(required = false) Integer id, @ModelAttribute("reviews") Reviews formReviews, Model model) {
@@ -90,6 +110,7 @@ public class CategoryController {
     public String deleteComment(@PathVariable int gameId, @PathVariable int reviewId) {
         Optional<Games> gamesOptional = gamesRepository.findById(gameId);
 
+
         if (gamesOptional.isPresent()) {
             Games game = gamesOptional.get();
             Collection<Reviews> reviews = game.getReviews();
@@ -102,10 +123,9 @@ public class CategoryController {
                     break;
                 }
             }
-
             gamesRepository.save(game);
 
-            return "redirect:/products/gamedetails/" +gameId;
+            return "redirect:/products/gamedetails/" + gameId;
         }
         return "products/gamedetails";
     }
