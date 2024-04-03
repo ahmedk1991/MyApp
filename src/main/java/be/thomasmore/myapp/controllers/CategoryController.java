@@ -45,22 +45,18 @@ public class CategoryController {
 
         Optional<Games> game = gamesRepository.findById(id);
 
-        if (!game.isPresent()) {
-
-            return "products/gamedetails";
-        }
 
         Games currentGame = game.get();
         String genre = currentGame.getCategory();
 
         Optional<Games> nextGame = gamesRepository.findFirstByCategoryAndIdGreaterThanOrderByIdAsc(genre, id);
         if (nextGame.isEmpty()) {
-            nextGame = gamesRepository.findFirstByCategoryAndIdGreaterThanOrderByIdAsc(genre, id);
+            nextGame = gamesRepository.findFirstByCategoryAndIdOrderByIdAsc(genre, id);
         }
 
         Optional<Games> prevGame = gamesRepository.findFirstByCategoryAndIdLessThanOrderByIdDesc(genre, id);
         if (prevGame.isEmpty()) {
-            prevGame =gamesRepository.findFirstByCategoryAndIdLessThanOrderByIdDesc(genre, id);
+            prevGame =gamesRepository.findFirstByCategoryAndIdOrderByIdDesc(genre, id);
         }
 
         long count = currentGame.getReviews().size();

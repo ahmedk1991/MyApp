@@ -10,7 +10,7 @@ import java.util.Date;
 public class Games {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private long id;
 
     private String name;
     private String category;
@@ -33,11 +33,11 @@ public class Games {
     }
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
