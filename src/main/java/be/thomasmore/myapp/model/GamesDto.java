@@ -22,6 +22,8 @@ public class GamesDto {
 
 
 
+    @NotEmpty(message = "Url is required")
+    private String videoUrl;
     private MultipartFile imageFile;
 
     public GamesDto() {
@@ -72,6 +74,13 @@ public class GamesDto {
     }
     public void setConsole(String console) {
         this.console = console;
+    }
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
     }
 
 }

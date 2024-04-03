@@ -23,7 +23,7 @@ public class homePageController  {
                                   @RequestParam(required = false) String console) {
 
 
-        Iterable<Games> allGames=gamesRepository.findAll();
+        Iterable<Games> allGames;
 
 
        if (minPrice != null || maxPrice != null || category != null || console != null) {

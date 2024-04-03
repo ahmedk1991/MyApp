@@ -65,6 +65,14 @@
                            th:errors="${gamesDto.price}"></p>
                     </div>
                 </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">VideoUrl</label>
+                    <div class="col-sm-8">
+                        <input class="form-control"  th:field="${gamesDto.videoUrl}">
+                        <p th:if="${#fields.hasErrors('videoUrl')}" th:errorclass="text-danger"
+                           th:errors="${gamesDto.videoUrl}"></p>
+                    </div>
+                </div>
 
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Description</label>

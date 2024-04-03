@@ -69,6 +69,7 @@ public class GamesController {
         game.setPrice(gamesDto.getPrice());
         game.setDescription(gamesDto.getDescription());
         game.setConsole(gamesDto.getDescription());
+        game.setVideoUrl(gamesDto.getVideoUrl());
         try {
             game.setImageFileName(uploadImage(gamesDto.getImageFile()));
         } catch (IOException e) {
