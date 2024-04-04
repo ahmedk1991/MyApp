@@ -11,38 +11,44 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-public class homePageController  {
+public class homePageController {
 
     @Autowired
     private GamesRepository gamesRepository;
-    @GetMapping({"/"})
-  public String indexListFilter(Model model,
-                                 @RequestParam(required = false) Integer minPrice,
-                                 @RequestParam(required = false) Integer maxPrice,
-                                 @RequestParam(required = false) String category,
-                                  @RequestParam(required = false) String console) {
 
+    @GetMapping("/")
+    public String indexListFilter(Model model,
+                                  @RequestParam(required = false) Integer minPrice,
+                                  @RequestParam(required = false) Integer maxPrice,
+                                  @RequestParam(required = false) String category,
+                                  @RequestParam(required = false) String console,
+                                  @RequestParam(required = false, defaultValue = "price_asc") String orderBy) {
 
         Iterable<Games> allGames;
 
-
-       if (minPrice != null || maxPrice != null || category != null || console != null) {
-           List<Games> filteredGames = gamesRepository.findByFilter(minPrice, maxPrice, category, console);
-          model.addAttribute("allgames", filteredGames);
-          long count=filteredGames.size();
-          model.addAttribute("count",count);
-       } else {
-            allGames=gamesRepository.findAll();
-       model.addAttribute("allgames", allGames);
-           long count=allGames.spliterator().estimateSize();
-           model.addAttribute("count",count);
+        if (minPrice != null || maxPrice != null || category != null || console != null) {
+            List<Games> filteredGames;
+            if (orderBy != null && !orderBy.isEmpty()) {
+                filteredGames = gamesRepository.findByFilter(minPrice, maxPrice, category, console, orderBy);
+            } else {
+                filteredGames = gamesRepository.findByFilter(minPrice, maxPrice, category, console, "price_asc");
+            }
+            model.addAttribute("allgames", filteredGames);
+            long count = filteredGames.size();
+            model.addAttribute("count", count);
+        } else {
+            allGames = gamesRepository.findAll();
+            model.addAttribute("allgames", allGames);
+            long count = allGames.spliterator().estimateSize();
+            model.addAttribute("count", count);
         }
 
-       model.addAttribute("minPrice", minPrice);
-       model.addAttribute("maxPrice", maxPrice);
+        model.addAttribute("minPrice", minPrice);
+        model.addAttribute("maxPrice", maxPrice);
         model.addAttribute("console", console);
-       model.addAttribute("category", category);
+        model.addAttribute("category", category);
 
         return "index";
     }
 }
+
