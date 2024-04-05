@@ -21,7 +21,8 @@ public class Games {
     private String console;
     private String imageFileName;
 
-
+    @ManyToMany(mappedBy = "games")
+    private Collection<Ratings> ratings;
 
     @Column(length = 300)
     private String videoUrl;
@@ -102,5 +103,15 @@ public class Games {
 
     public void setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
+    }
+
+
+
+    public Collection<Ratings> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(Collection<Ratings> ratings) {
+        this.ratings = ratings;
     }
 }

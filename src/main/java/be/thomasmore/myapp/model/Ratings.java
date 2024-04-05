@@ -1,14 +1,20 @@
 package be.thomasmore.myapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Collection;
 
 @Entity
 public class Ratings {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
     private double rating;
+
+
+    @ManyToMany
+    private Collection<Games>games;
 
     public Ratings() {
     }
@@ -28,4 +34,12 @@ public class Ratings {
     public void setRating(double rating) {
         this.rating = rating;
     }
+    public Collection<Games> getGames() {
+        return games;
+    }
+
+    public void setGames(Collection<Games> games) {
+        this.games = games;
+    }
+
 }
