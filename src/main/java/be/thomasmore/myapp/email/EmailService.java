@@ -1,20 +1,35 @@
 package be.thomasmore.myapp.email;
 
+import jakarta.mail.MessagingException;
+
+import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Service
 public class EmailService {
 
 
-    @Autowired
-    private EmailService emailService;
 
-    void sendEmail(String to, String subject, String body) {
+        @Autowired
+        private JavaMailSender emailSender;
 
-    }
+        public void sendEmail(String to, String subject, String body) {
+            MimeMessage message = emailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message);
+            try {
+                helper.setTo(to);
+                helper.setSubject(subject);
+                helper.setText(body);
+                emailSender.send(message);
+            } catch (MessagingException e) {
+
+            }
+        }
 }

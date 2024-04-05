@@ -23,7 +23,7 @@ public class ContactController {
                 + "Phone: " + phone + "\n\n"
                 + "Message:\n" + message;
 
-        emailService.sendEmail("mailtrap@demomailtrap.com", subject, body);
+        emailService.sendEmail("akriekske1@gmail.com", subject, body);
 
         return "redirect:/products/contact";
     }

@@ -161,7 +161,7 @@ public class GamesController {
         return "products";
     }
 
-    private String uploadImage(MultipartFile multipartFile) throws IOException {
+        private String uploadImage(MultipartFile multipartFile) throws IOException {
         if (multipartFile.isEmpty()) {
             return null;
         }
