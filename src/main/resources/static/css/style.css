@@ -19,6 +19,17 @@
     width:45%;
     padding: 10px 20px;
     margin-top:10px;
+    align-self: center;
+}
+.btn-info{
+    width:45%;
+    padding: 10px 20px;
+    margin-top:10px;
+    align-self: center;
+}
+.contact{
+    margin: 10%;
+    color:orange;
 }
 .nav-item{
     padding:2%;

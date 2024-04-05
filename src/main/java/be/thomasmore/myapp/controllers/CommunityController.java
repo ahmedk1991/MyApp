@@ -32,4 +32,11 @@ public class CommunityController {
         model.addAttribute("count",count);
         return"products/community";
     }
+    @GetMapping({"/contact"})
+    public String showContact(Model model){
+
+
+        return"products/contact";
+    }
+
 }
