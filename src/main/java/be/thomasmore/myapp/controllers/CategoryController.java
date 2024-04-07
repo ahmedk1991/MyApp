@@ -1,6 +1,7 @@
 package be.thomasmore.myapp.controllers;
 
 import be.thomasmore.myapp.model.Games;
+import be.thomasmore.myapp.model.Ratings;
 import be.thomasmore.myapp.model.Reviews;
 import be.thomasmore.myapp.repositories.GamesRepository;
 import be.thomasmore.myapp.repositories.ReviewsRepository;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.*;
+
+import static be.thomasmore.myapp.controllers.homePageController.calculate;
 
 @Controller
 @RequestMapping("/products")
@@ -47,6 +50,7 @@ public class CategoryController {
 
 
         Games currentGame = game.get();
+
         String genre = currentGame.getCategory();
 
         Optional<Games> nextGame = gamesRepository.findFirstByCategoryAndIdGreaterThanOrderByIdAsc(genre, id);
@@ -56,12 +60,15 @@ public class CategoryController {
 
         Optional<Games> prevGame = gamesRepository.findFirstByCategoryAndIdLessThanOrderByIdDesc(genre, id);
         if (prevGame.isEmpty()) {
-            prevGame =gamesRepository.findFirstByCategoryAndIdOrderByIdDesc(genre, id);
+            prevGame = gamesRepository.findFirstByCategoryAndIdOrderByIdDesc(genre, id);
         }
+
+        double averagescore = calculateAverageRating(currentGame);
 
         long count = currentGame.getReviews().size();
         Reviews reviews = new Reviews();
 
+        model.addAttribute("avergescore", averagescore);
         model.addAttribute("nextGame", nextGame.get().getId());
         model.addAttribute("prevGame", prevGame.get().getId());
         model.addAttribute("count", count);
@@ -95,7 +102,6 @@ public class CategoryController {
         game.getReviews().add(review);
         gamesRepository.save(game);
 
-
         model.addAttribute("game", game);
 
         return "redirect:/products/gamedetails/" + id;
@@ -126,6 +132,8 @@ public class CategoryController {
         return "products/gamedetails";
     }
 
-
+   private double calculateAverageRating(Games game) {
+       return calculate(game);
+   }
 
 }

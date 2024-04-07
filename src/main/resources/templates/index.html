@@ -183,9 +183,9 @@
                                         <div class="card-body">
                                             <h5 th:text="${game.name}" class="card-title"></h5>
                                             <p th:text="|${game.price}Eur|" class="card-text"></p>
-                                            <p>
+                                            <p class="ratings">
                                                 <span>&#9733;</span>
-                                                <span th:text="${game.getRatings().get(0).getRating()}"></span>
+                                                <span th:text="|Ratings:${avgRatingsMap[game.id]}|"></span>
                                                 <span>&#9734;</span>
                                             </p>
 
@@ -194,6 +194,8 @@
 
                                         <a th:href="@{/products/addratings/{id}(id=${game.id})}" class="btn btn-success">Add Rating</a>
                                     </div>
+
+
                                 </div>
                             </div>
                         </div>

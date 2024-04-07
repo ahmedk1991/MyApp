@@ -3,13 +3,11 @@ package be.thomasmore.myapp.controllers;
 import be.thomasmore.myapp.model.Games;
 import be.thomasmore.myapp.model.Ratings;
 import be.thomasmore.myapp.repositories.GamesRepository;
+import be.thomasmore.myapp.repositories.RatingsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -18,14 +16,15 @@ public class homePageController {
 
     @Autowired
     private GamesRepository gamesRepository;
-
+    @Autowired
+    private RatingsRepository ratingsRepository;
     @GetMapping("/")
     public String indexListFilter(Model model,
                                   @RequestParam(required = false) Integer minPrice,
                                   @RequestParam(required = false) Integer maxPrice,
                                   @RequestParam(required = false) String category,
                                   @RequestParam(required = false) String console,
-                                  @RequestParam(required = false, defaultValue = "price_asc") String orderBy) {
+                                  @RequestParam(required = false, defaultValue = "price_asc") String orderBy){
 
         Iterable<Games> allGames;
 
@@ -45,6 +44,18 @@ public class homePageController {
             long count = allGames.spliterator().estimateSize();
             model.addAttribute("count", count);
         }
+        allGames = gamesRepository.findAll();
+
+
+    // Calculate average rating for each game
+    Map<Integer, Double> avgRatingsMap = new HashMap<>();
+    for (Games game : allGames) {
+        double avgRating = calculateAverageRating(game);
+        avgRatingsMap.put(game.getId(), avgRating);
+    }
+
+    model.addAttribute("allgames", allGames);
+    model.addAttribute("avgRatingsMap", avgRatingsMap);
 
         model.addAttribute("minPrice", minPrice);
         model.addAttribute("maxPrice", maxPrice);
@@ -53,33 +64,44 @@ public class homePageController {
 
         return "index";
     }
-    @PostMapping("/products/addratings/{id}")
-    public String addRatings(Model model, @PathVariable Integer id, @RequestParam double newRatingValue) {
 
+    @GetMapping("/products/addratings/{id}")
+    public String addRatingsForm(Model model, @PathVariable(required = false) int id) {
+        Optional<Games>optionalGames=gamesRepository.findById(id);
+
+        if(optionalGames.isPresent()) {
+            Ratings ratings = new Ratings();
+            model.addAttribute("ratings", ratings);
+        }
+        return "products/addratings";
+    }
+
+    @PostMapping("/products/addratings/{id}")
+    public String addRatings(Model model,@PathVariable int id, @ModelAttribute("ratings") Ratings formratings) {
         Optional<Games> gamesOptional = gamesRepository.findById(id);
 
-        if(gamesOptional.isPresent()){
+        if (gamesOptional.isPresent()) {
             Games game = gamesOptional.get();
 
-            Ratings newRating = new Ratings();
-            newRating.setRating(newRatingValue);
+            Ratings ratings= new Ratings();
 
-            Collection<Games> gameCollection = new ArrayList<>();
-            gameCollection.add(game);
+            ratings.setRating(formratings.getRating());
 
-            newRating.setGames(gameCollection);
 
-            game.getRatings().add(newRating);
-
+            game.getRatings().add(ratings);
             gamesRepository.save(game);
 
-            double averageScore = calculateAverageRating(game);
-            model.addAttribute("game",game);
-            model.addAttribute("averagescore", averageScore);
+
+            ratings.getGames().add(game);
+            ratingsRepository.save(ratings);
         }
-        return "products/addratings"+id;
+        return "products/addratings";
     }
-    private double calculateAverageRating(Games game) {
+       private double calculateAverageRating(Games game) {
+           return calculate(game);
+       }
+
+    static double calculate(Games game) {
         Collection<Ratings> ratings = game.getRatings();
         double totalScore = 0.0;
         int numberOfRatings = ratings.size();
@@ -88,7 +110,12 @@ public class homePageController {
             totalScore += rating.getRating();
         }
 
-        return numberOfRatings > 0 ? totalScore / numberOfRatings : 0.0;
+        double averageRating = numberOfRatings > 0 ? totalScore / numberOfRatings : 0.0;
+
+        return Math.round(averageRating * 10.0) / 10.0;
     }
+
+
+
 }
 

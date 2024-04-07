@@ -3,14 +3,13 @@ package be.thomasmore.myapp.model;
 import jakarta.persistence.*;
 
 import java.util.Collection;
-import java.util.Date;
 
 @Entity
 
 public class Games {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     private String name;
     private String category;
@@ -34,11 +33,11 @@ public class Games {
     }
 
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

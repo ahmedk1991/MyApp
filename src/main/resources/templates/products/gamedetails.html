@@ -33,7 +33,11 @@
             <h1 th:text="${game.get().name}" class="centered-text">Game details</h1>
             <div th:text="${game.get().description}"></div>
 
-            <a class="btn btn-primary" href="#!">click</a>
+            <p class="ratings">
+                <span>&#9733;</span>
+                <span th:text="|Ratings:  ${avergescore}|"></span>
+                <span>&#9734;</span>
+            </p>
         </div>
     </div>
 

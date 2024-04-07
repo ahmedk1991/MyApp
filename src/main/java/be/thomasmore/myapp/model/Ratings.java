@@ -2,7 +2,9 @@ package be.thomasmore.myapp.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 @Entity
 public class Ratings {
@@ -17,7 +19,9 @@ public class Ratings {
     private Collection<Games>games;
 
     public Ratings() {
+        this.games = new ArrayList<>();
     }
+
 
     public Long getId() {
         return id;
@@ -34,6 +38,7 @@ public class Ratings {
     public void setRating(double rating) {
         this.rating = rating;
     }
+
     public Collection<Games> getGames() {
         return games;
     }
@@ -41,5 +46,4 @@ public class Ratings {
     public void setGames(Collection<Games> games) {
         this.games = games;
     }
-
 }
