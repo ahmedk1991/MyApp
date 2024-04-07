@@ -1,14 +1,17 @@
 package be.thomasmore.myapp.controllers;
 
 import be.thomasmore.myapp.model.Games;
+import be.thomasmore.myapp.model.Ratings;
 import be.thomasmore.myapp.repositories.GamesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class homePageController {
@@ -49,6 +52,43 @@ public class homePageController {
         model.addAttribute("category", category);
 
         return "index";
+    }
+    @PostMapping("/products/addratings/{id}")
+    public String addRatings(Model model, @PathVariable Integer id, @RequestParam double newRatingValue) {
+
+        Optional<Games> gamesOptional = gamesRepository.findById(id);
+
+        if(gamesOptional.isPresent()){
+            Games game = gamesOptional.get();
+
+            Ratings newRating = new Ratings();
+            newRating.setRating(newRatingValue);
+
+            Collection<Games> gameCollection = new ArrayList<>();
+            gameCollection.add(game);
+
+            newRating.setGames(gameCollection);
+
+            game.getRatings().add(newRating);
+
+            gamesRepository.save(game);
+
+            double averageScore = calculateAverageRating(game);
+            model.addAttribute("game",game);
+            model.addAttribute("averagescore", averageScore);
+        }
+        return "products/addratings"+id;
+    }
+    private double calculateAverageRating(Games game) {
+        Collection<Ratings> ratings = game.getRatings();
+        double totalScore = 0.0;
+        int numberOfRatings = ratings.size();
+
+        for (Ratings rating : ratings) {
+            totalScore += rating.getRating();
+        }
+
+        return numberOfRatings > 0 ? totalScore / numberOfRatings : 0.0;
     }
 }
 

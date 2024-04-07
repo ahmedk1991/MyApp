@@ -82,7 +82,7 @@ public class GamesController {
     }
 
     @GetMapping("/edit/{id}")
-    public String displayEditPage(Model model, @PathVariable int id) {
+    public String displayEditPage(Model model, @PathVariable(required = false) int id) {
         try {
             Optional<Games> gameOptional = gamesRepository.findById(id);
             if (gameOptional.isPresent()) {
@@ -143,7 +143,7 @@ public class GamesController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(Model model, @PathVariable int id) {
+    public String delete(Model model, @PathVariable(required = false) int id) {
 
         Optional<Games> gameOptional = gamesRepository.findById(id);
 
