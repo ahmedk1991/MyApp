@@ -21,9 +21,9 @@ public class Reviews {
     private String name;
 
 
-
     @ManyToMany
-    private Collection<Games>games;
+    private Collection<Games> games;
+
     public Reviews() {
     }
 

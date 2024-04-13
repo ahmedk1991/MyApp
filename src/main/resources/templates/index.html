@@ -109,25 +109,24 @@
                                             <label class="form-check-label" for="horror">Horror</label>
                                         </div>
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="adventure"
-                                                   name="category" value="Adventure"
-                                                   th:checked="${category == 'Adventure'}">
+                                            <input type="checkbox" class="form-check-input" id="adventure" name="category"
+                                                   value="Adventure" th:checked="${category == 'Adventure'}">
                                             <label class="form-check-label" for="adventure">Adventure</label>
                                         </div>
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="shooter" name="category"
-                                                   value="shooter" th:checked="${category == 'Shooter'}">
+                                                   value="Shooter" th:checked="${category == 'Shooter'}">
                                             <label class="form-check-label" for="adventure">Shooter</label>
                                         </div>
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="survival"
-                                                   name="category" value="survival"
+                                                   name="category" value="Survival"
                                                    th:checked="${category == 'Survival'}">
                                             <label class="form-check-label" for="adventure">Survival</label>
                                         </div>
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="action" name="category"
-                                                   value="action" th:checked="${category == 'Action'}">
+                                                   value="Action" th:checked="${category == 'Action'}">
                                             <label class="form-check-label" for="adventure">Action</label>
                                         </div>
 
@@ -155,7 +154,8 @@
                                             <label class="form-check-label" for="xbox">Xbox</label>
                                         </div>
                                         <div>
-                                            <button type="submit" name="orderBy" value="price_desc" class="btn btn-info">
+                                            <button type="submit" name="orderBy" value="price_desc"
+                                                    class="btn btn-info">
                                                 Price Down <i class="bi bi-arrow-down"></i>
                                             </button>
                                         </div>
@@ -176,7 +176,7 @@
                         <div class="products">
                             <h4 th:text="|All games:(${count})|"></h4>
                             <div class="row g-0">
-                                <div class="col-12 col-md-6 col-lg-4" th:each="game:${allgames}">
+                                <div class="col-12 col-md-6 col-lg-4" th:each="game:${allespellen}">
                                     <div class="card" style="padding: 1%;margin:2%;">
                                         <img th:src="@{/img/{filename}(filename=${game.imageFileName})}"
                                              class="card-img-top" alt="Product Image">
@@ -192,7 +192,8 @@
                                         </div>
                                         <a th:href="@{/products/gamedetails/{id}(id=${game.id})}" class="btn btn-info">View</a>
 
-                                        <a th:href="@{/products/addratings/{id}(id=${game.id})}" class="btn btn-success">Add Rating</a>
+                                        <a th:href="@{/products/addratings/{id}(id=${game.id})}"
+                                           class="btn btn-success">Add Rating</a>
                                     </div>
 
 

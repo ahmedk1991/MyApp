@@ -22,39 +22,39 @@ public class homePageController {
     public String indexListFilter(Model model,
                                   @RequestParam(required = false) Integer minPrice,
                                   @RequestParam(required = false) Integer maxPrice,
-                                  @RequestParam(required = false) String category,
-                                  @RequestParam(required = false) String console,
+                                  @RequestParam(required = false)  List<String> category,
+                                  @RequestParam(required = false)  List<String>console,
                                   @RequestParam(required = false, defaultValue = "price_asc") String orderBy){
 
         Iterable<Games> allGames;
 
         if (minPrice != null || maxPrice != null || category != null || console != null) {
             List<Games> filteredGames;
-            if (orderBy != null && !orderBy.isEmpty()) {
+            if (orderBy != null ) {
                 filteredGames = gamesRepository.findByFilter(minPrice, maxPrice, category, console, orderBy);
             } else {
                 filteredGames = gamesRepository.findByFilter(minPrice, maxPrice, category, console, "price_asc");
             }
-            model.addAttribute("allgames", filteredGames);
+            model.addAttribute("allespellen", filteredGames);
             long count = filteredGames.size();
             model.addAttribute("count", count);
         } else {
             allGames = gamesRepository.findAll();
-            model.addAttribute("allgames", allGames);
+            model.addAttribute("allespellen", allGames);
             long count = allGames.spliterator().estimateSize();
             model.addAttribute("count", count);
         }
         allGames = gamesRepository.findAll();
 
 
-    // Calculate average rating for each game
+
     Map<Integer, Double> avgRatingsMap = new HashMap<>();
     for (Games game : allGames) {
         double avgRating = calculateAverageRating(game);
         avgRatingsMap.put(game.getId(), avgRating);
     }
 
-    model.addAttribute("allgames", allGames);
+
     model.addAttribute("avgRatingsMap", avgRatingsMap);
 
         model.addAttribute("minPrice", minPrice);
@@ -77,7 +77,7 @@ public class homePageController {
     }
 
     @PostMapping("/products/addratings/{id}")
-    public String addRatings(Model model,@PathVariable int id, @ModelAttribute("ratings") Ratings formratings) {
+    public String addRatings(@PathVariable int id, @ModelAttribute("ratings") Ratings formratings) {
         Optional<Games> gamesOptional = gamesRepository.findById(id);
 
         if (gamesOptional.isPresent()) {

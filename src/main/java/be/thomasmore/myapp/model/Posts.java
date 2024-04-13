@@ -18,7 +18,7 @@ public class Posts {
     @NotEmpty(message = "Name is required")
     private String name;
 
-    @Size(max=500,message = "The description cannot exceed 500 characters")
+    @Size(max = 500, message = "The description cannot exceed 500 characters")
     private String post;
     private String imageFileName;
 
@@ -58,6 +58,7 @@ public class Posts {
         this.imageFileName = imageFileName;
 
     }
+
     public Date getDate() {
         return date;
     }

@@ -1,24 +1,18 @@
 package be.thomasmore.myapp.controllers;
 
 import be.thomasmore.myapp.model.Games;
-import be.thomasmore.myapp.model.Ratings;
 import be.thomasmore.myapp.model.Reviews;
 import be.thomasmore.myapp.repositories.GamesRepository;
 import be.thomasmore.myapp.repositories.ReviewsRepository;
-import jakarta.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.*;
 
 import static be.thomasmore.myapp.controllers.homePageController.calculate;
+
 
 @Controller
 @RequestMapping("/products")
@@ -29,7 +23,7 @@ public class CategoryController {
     private ReviewsRepository reviewsRepository;
 
     @GetMapping({"/category"})
-    public String showCategoryGames(Model model) {
+    public String showCategoryGames() {
 
         return "products/category";
     }
@@ -132,8 +126,8 @@ public class CategoryController {
         return "products/gamedetails";
     }
 
-   private double calculateAverageRating(Games game) {
-       return calculate(game);
-   }
+    private double calculateAverageRating(Games game) {
+        return calculate(game);
+    }
 
 }

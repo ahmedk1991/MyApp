@@ -25,7 +25,7 @@ public class ContactController {
                 + "Message:\n" + message;
 
 
-            emailService.sendMessage("akriekske1@gmail.com", subject, body);
+        emailService.sendMessage("akriekske1@gmail.com", subject, body);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("products/contact");

@@ -28,38 +28,38 @@ import java.util.Date;
 @Controller
 @RequestMapping("/products")
 public class CommunityController {
-    @Autowired
-    private GamesRepository gamesRepository;
-    @Autowired
-    private ReviewsRepository reviewsRepository;
+
     @Autowired
     private PostsRepository postsRepository;
 
     @GetMapping({"/community"})
-    public String showCommunity(Model model){
+    public String showCommunity(Model model) {
 
-       Iterable<Posts> allPosts= postsRepository.findAll();
-       long count=allPosts.spliterator().estimateSize();
+        Iterable<Posts> allPosts = postsRepository.findAll();
+        long count = allPosts.spliterator().estimateSize();
 
-        model.addAttribute("allPosts",allPosts);
-        model.addAttribute("count",count);
-        return"products/community";
+        model.addAttribute("allPosts", allPosts);
+        model.addAttribute("count", count);
+        return "products/community";
     }
+
     @GetMapping({"/contact"})
-    public String showContact(Model model){
+    public String showContact() {
 
 
-        return"products/contact";
+        return "products/contact";
     }
+
     @GetMapping("/createpost")
-    public String showNewPost(Model model){
-        PostsDto postSDto= new PostsDto();
-        model.addAttribute("postsDto",postSDto);
+    public String showNewPost(Model model) {
+        PostsDto postSDto = new PostsDto();
+        model.addAttribute("postsDto", postSDto);
 
         return "products/createpost";
     }
+
     @PostMapping("/createpost")
-    public String createNewPost (Model model, @Valid @ModelAttribute PostsDto postSDto, BindingResult result) throws IOException{
+    public String createNewPost( @Valid @ModelAttribute PostsDto postSDto, BindingResult result)throws IOException{
         if (postSDto.getImageFile().isEmpty()) {
             result.addError(new FieldError("postsDto", "imageFile", "The image file is required"));
         }
@@ -67,7 +67,7 @@ public class CommunityController {
             return "products/community";
         }
 
-       Posts posts=new Posts();
+        Posts posts = new Posts();
         posts.setName(postSDto.getName());
         posts.setDate(new Date());
         posts.setPost(postSDto.getPost());
@@ -81,6 +81,7 @@ public class CommunityController {
         postsRepository.save(posts);
         return "redirect:/products/community";
     }
+
     private String uploadImage(MultipartFile multipartFile) throws IOException {
         if (multipartFile.isEmpty()) {
             return null;
@@ -99,7 +100,6 @@ public class CommunityController {
 
         return filename;
     }
-
 
 
 }

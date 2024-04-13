@@ -96,6 +96,7 @@ public class Games {
     public void setReviews(Collection<Reviews> reviews) {
         this.reviews = reviews;
     }
+
     public String getVideoUrl() {
         return videoUrl;
     }
@@ -103,7 +104,6 @@ public class Games {
     public void setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
     }
-
 
 
     public Collection<Ratings> getRatings() {

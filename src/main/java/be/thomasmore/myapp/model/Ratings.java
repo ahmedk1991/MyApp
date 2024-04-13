@@ -16,7 +16,7 @@ public class Ratings {
 
 
     @ManyToMany
-    private Collection<Games>games;
+    private Collection<Games> games;
 
     public Ratings() {
         this.games = new ArrayList<>();

@@ -16,10 +16,9 @@ public class GamesDto {
     private String console;
     @Min(0)
     private double price;
-    @Size(min=10,message = "The description should be at least 10 characters")
-    @Size(max=500,message = "The description cannot exceed 500 characters")
+    @Size(min = 10, message = "The description should be at least 10 characters")
+    @Size(max = 500, message = "The description cannot exceed 500 characters")
     private String description;
-
 
 
     @NotEmpty(message = "Url is required")
@@ -72,9 +71,11 @@ public class GamesDto {
     public String getConsole() {
         return console;
     }
+
     public void setConsole(String console) {
         this.console = console;
     }
+
     public String getVideoUrl() {
         return videoUrl;
     }

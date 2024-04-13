@@ -7,8 +7,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class PostsDto {
     @NotEmpty(message = "Url is required")
     private String name;
-    @Size(min=10,message = "The description should be at least 10 characters")
-    @Size(max=500,message = "The description cannot exceed 500 characters")
+    @Size(min = 10, message = "The description should be at least 10 characters")
+    @Size(max = 500, message = "The description cannot exceed 500 characters")
     private String post;
 
     private MultipartFile imageFile;

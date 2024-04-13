@@ -54,7 +54,7 @@ public class GamesController {
 
 
     @PostMapping("/create")
-    public String createProduct(Model model, @Valid @ModelAttribute GamesDto gamesDto, BindingResult result) throws IOException {
+    public String createProduct( @Valid @ModelAttribute GamesDto gamesDto, BindingResult result) throws IOException {
 
         if (gamesDto.getImageFile().isEmpty()) {
             result.addError(new FieldError("gamesDto", "imageFile", "The image file is required"));
@@ -109,7 +109,7 @@ public class GamesController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editGame(@Valid @ModelAttribute GamesDto gamesDto, BindingResult result, @PathVariable int id) {
+    public String editGame(@Valid @ModelAttribute GamesDto gamesDto, BindingResult result, @PathVariable(required = false) int id) {
         if (result.hasErrors()) {
 
             return "products/editproduct";
@@ -161,7 +161,7 @@ public class GamesController {
         return "products";
     }
 
-        private String uploadImage(MultipartFile multipartFile) throws IOException {
+    private String uploadImage(MultipartFile multipartFile) throws IOException {
         if (multipartFile.isEmpty()) {
             return null;
         }
@@ -179,8 +179,6 @@ public class GamesController {
 
         return filename;
     }
-
-
 
 
 }

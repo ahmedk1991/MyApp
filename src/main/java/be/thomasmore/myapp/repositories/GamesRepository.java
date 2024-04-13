@@ -15,16 +15,17 @@ public interface GamesRepository extends CrudRepository<Games, Integer> {
     @Query("SELECT g FROM Games g WHERE " +
             "(:minPrice IS NULL OR g.price >= :minPrice) AND " +
             "(:maxPrice IS NULL OR g.price <= :maxPrice) AND " +
-            "(:category IS NULL OR :category = g.category) AND " +
-            "(:console IS NULL OR :console = g.console) " +
+            "(:category IS NULL OR g.category IN :category) AND " +
+            "(:console IS NULL OR g.console IN :console) " +
             "ORDER BY " +
             "CASE WHEN :orderBy = 'price_desc' THEN g.price END DESC, " +
             "CASE WHEN :orderBy = 'price_asc' THEN g.price END ASC")
     List<Games> findByFilter(@Param("minPrice") Integer minPrice,
                              @Param("maxPrice") Integer maxPrice,
-                             @Param("category") String category,
-                             @Param("console") String console,
+                             @Param("category") List<String> category,
+                             @Param("console") List<String> console,
                              @Param("orderBy") String orderBy);
+
 
     Optional<Games> findById(Integer id);
 
