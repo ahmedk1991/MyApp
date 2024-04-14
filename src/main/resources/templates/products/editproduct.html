@@ -24,12 +24,7 @@
                            th:errors="${gamesDto.name}"></p>
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <label class="col-sm-4 col-form-label">ID</label>
-                    <div class="col-sm-8">
-                        <input readonly class="form-control" th:value="${game.id}">
-                    </div>
-                </div>
+
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Category</label>
                     <div class="col-sm-8">
@@ -66,11 +61,22 @@
                            th:errors="${gamesDto.price}"></p>
                     </div>
                 </div>
+
                 <div class="row mb-3">
                     <div class="offset-sm-4 col-sm-8">
                         <input class="form-control" type="file" th:field="${gamesDto.imageFile}">
-                        <img th:src="@{/img/{filename}(filename=${game.imageFileName})}"
-                             th:alt="${game.name}" style="width: 100px; height: auto;">
+                        <img th:if="${game != null}"
+                             th:src="@{/img/{filename}(filename=${game.imageFileName})}"
+                             th:alt="${game.name}" style="width: 200px; height: auto;">
+
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">VideoUrl</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" th:field="${gamesDto.videoUrl}">
+                        <p th:if="${#fields.hasErrors('videoUrl')}" th:errorclass="text-danger"
+                           th:errors="${gamesDto.videoUrl}"></p>
                     </div>
                 </div>
 

@@ -3,10 +3,11 @@ package be.thomasmore.myapp.controllers;
 
 import be.thomasmore.myapp.model.PostsDto;
 import be.thomasmore.myapp.model.Posts;
-import be.thomasmore.myapp.repositories.GamesRepository;
+
 import be.thomasmore.myapp.repositories.PostsRepository;
-import be.thomasmore.myapp.repositories.ReviewsRepository;
+
 import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +29,7 @@ import java.util.Date;
 @Controller
 @RequestMapping("/products")
 public class CommunityController {
+
 
     @Autowired
     private PostsRepository postsRepository;
@@ -59,28 +61,32 @@ public class CommunityController {
     }
 
     @PostMapping("/createpost")
-    public String createNewPost( @Valid @ModelAttribute PostsDto postSDto, BindingResult result)throws IOException{
-        if (postSDto.getImageFile().isEmpty()) {
+    public String createNewPost(@Valid @ModelAttribute PostsDto postsDto, BindingResult result, Model model) {
+        if (postsDto.getImageFile().isEmpty()) {
             result.addError(new FieldError("postsDto", "imageFile", "The image file is required"));
         }
+
         if (result.hasErrors()) {
-            return "products/community";
+            model.addAttribute("postsDto", postsDto);
+            return "products/createpost";
         }
 
         Posts posts = new Posts();
-        posts.setName(postSDto.getName());
+        posts.setName(postsDto.getName());
         posts.setDate(new Date());
-        posts.setPost(postSDto.getPost());
+        posts.setPost(postsDto.getPost());
+
         try {
-            posts.setImageFileName(uploadImage(postSDto.getImageFile()));
+           String filename= uploadImage(postsDto.getImageFile());
+           posts.setImageFileName(filename);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-
         postsRepository.save(posts);
         return "redirect:/products/community";
     }
+
 
     private String uploadImage(MultipartFile multipartFile) throws IOException {
         if (multipartFile.isEmpty()) {
