@@ -45,14 +45,12 @@ public class GamesController {
     private RatingsRepository ratingsRepository;
     private static final Logger logger = LoggerFactory.getLogger(GamesController.class);
     @GetMapping({"", "/"})
-    public String showGamesList(Model model, @RequestParam(required = false) String search) {
+    public String showGamesList(Model model) {
 
         Iterable<Games> allgames;
-        if (search != null) {
-            allgames = gamesRepository.findByNameIsContainingIgnoreCase(search);
-        } else {
-            allgames = gamesRepository.findAll();
-        }
+
+        allgames = gamesRepository.findAll();
+
         model.addAttribute("allgames", allgames);
         return "products/gameslist";
     }
