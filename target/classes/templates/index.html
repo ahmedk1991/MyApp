@@ -1,0 +1,217 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="../static/css/style.css"/>
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div th:replace="~{fragments/header :: header}">header</div>
+
+<div id="carouselExampleCaptions" class="carousel" data-bs-ride="carousel">
+    <div class="container">
+        <h1 class="text-center my-4">Welcome to <span class="span">Gameheaven</span></h1>
+    </div>
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="/img/homepage4_image.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Shadows Beyond</h5>
+                <p>Navigate darkness where horrors await. Can you face your fears?</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/img/homepage3_image.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Last Stand Earth</h5>
+                <p>Humanity's hope in a post-apocalyptic world. Survive at all costs.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/img/homepage2_image.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Blitz Assault</h5>
+                <p>High-octane battles await. Are you ready for the adrenaline rush?</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/img/homepage1_image.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Quest of Legends</h5>
+                <p>Embark on a journey through mystical lands. Discover your destiny.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<div class="background-div">
+    <img th:src="@{/img/community_image.jpg}">
+</div>
+
+<div class="background-div">
+    <img th:src="@{/img/war_image.png}">
+
+</div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Catalog Page</h2>
+                <p>Search for your favorite game</p>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="d-none d-md-block">
+                            <div class="filters">
+                                <form>
+                                    <div class="filter-item">
+                                        <h3>Price Range</h3>
+                                        <div class="form-group">
+                                            <label for="minPrice">From:</label>
+                                            <input type="number" class="form-control" id="minPrice" name="minPrice"
+                                                   placeholder="Min Price" th:value="${minPrice}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="maxPrice">To:</label>
+                                            <input type="number" class="form-control" id="maxPrice" name="maxPrice"
+                                                   placeholder="Max Price" th:value="${maxPrice}">
+                                        </div>
+                                    </div>
+
+                                    <div class="filter-item">
+                                        <h3>Categories</h3>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="horror" name="category"
+                                                   value="Horror" th:checked="${category == 'Horror'}">
+                                            <label class="form-check-label" for="horror">Horror</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="adventure" name="category"
+                                                   value="Adventure" th:checked="${category == 'Adventure'}">
+                                            <label class="form-check-label" for="adventure">Adventure</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="shooter" name="category"
+                                                   value="Shooter" th:checked="${category == 'Shooter'}">
+                                            <label class="form-check-label" for="adventure">Shooter</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="survival"
+                                                   name="category" value="Survival"
+                                                   th:checked="${category == 'Survival'}">
+                                            <label class="form-check-label" for="adventure">Survival</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="action" name="category"
+                                                   value="Action" th:checked="${category == 'Action'}">
+                                            <label class="form-check-label" for="adventure">Action</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="filter-item">
+                                        <h3>Console</h3>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="pc" name="console"
+                                                   value="pc" th:checked="${console == 'pc'}">
+                                            <label class="form-check-label" for="pc">PC</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="xbox" name="console"
+                                                   value="xbox" th:checked="${console == 'xbox'}">
+                                            <label class="form-check-label" for="xbox">Xbox</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="ps5" name="console"
+                                                   value="ps5" th:checked="${console == 'ps5'}">
+                                            <label class="form-check-label" for="xbox">Nintendo</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="nintendo" name="console"
+                                                   value="nintendo" th:checked="${console == 'nintendo'}">
+                                            <label class="form-check-label" for="xbox">Xbox</label>
+                                        </div>
+                                        <div>
+                                            <button type="submit" name="orderBy" value="price_desc"
+                                                    class="btn btn-info">
+                                                Price Down <i class="bi bi-arrow-down"></i>
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button type="submit" name="orderBy" value="price_asc" class="btn btn-info">
+                                                Price Up <i class="bi bi-arrow-up"></i>
+                                            </button>
+                                        </div>
+
+
+                                    </div>
+                                    <input class="input" type="submit" value="Search">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="products">
+                            <h4 th:text="|All games:(${count})|"></h4>
+                            <div class="row g-0">
+                                <div class="col-12 col-md-6 col-lg-4" th:each="game:${allespellen}">
+                                    <div class="card" style="padding: 1%;margin:2%;">
+                                        <img th:src="@{/img/{filename}(filename=${game.imageFileName})}"
+                                             class="card-img-top" alt="Product Image">
+                                        <div class="card-body">
+                                            <h5 th:text="${game.name}" class="card-title"></h5>
+                                            <p th:text="|${game.price}Eur|" class="card-text"></p>
+                                            <p class="ratings">
+                                                <span>&#9733;</span>
+                                                <span th:text="|Ratings:${avgRatingsMap[game.id]}|"></span>
+                                                <span>&#9734;</span>
+                                            </p>
+
+                                        </div>
+                                        <a th:href="@{/products/gamedetails/{id}(id=${game.id})}" class="btn btn-info">View</a>
+
+                                        <a th:href="@{/products/addratings/{id}(id=${game.id})}"
+                                           class="btn btn-success">Add Rating</a>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<div th:replace="~{fragments/footer :: footer}">footer</div>
+</body>
+</html>

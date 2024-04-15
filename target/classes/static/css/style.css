@@ -1,0 +1,266 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+  height:2%;
+    width: 100%;
+    background-color: rgba(100,97,114,0.6);
+    color: white;
+    text-align: center;
+}
+.card-img-top{
+    width:100%;
+    height:250px;
+    margin:0%;
+    max-width: 300px;
+
+}
+.ratings{
+    margin-top:2%
+}
+.btn-primary{
+    width:45%;
+    padding: 10px 20px;
+    margin-top:10px;
+    align-self: center;
+}
+.btn-success{
+    width:45%;
+    padding: 10px 20px;
+    margin-top:10px;
+    align-self: center;
+}
+.btn-info{
+    width:50%;
+    padding: 10px 20px;
+    margin-top:10px;
+    align-self: center;
+}
+.contact{
+    margin: 10%;
+    color:orange;
+}
+.nav-item{
+    padding:2%;
+
+}
+.input{
+    margin-bottom: 20%;
+}
+
+#carouselExampleCaptions {
+    max-width: 40%;
+    max-height: 100%;
+    margin: auto;
+    justify-content: center;
+    z-index: 1;
+
+}
+.background-div {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.carousel-item img {
+    width: 50%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.comment-form {
+    width: 100%;
+    height: 150px;
+}
+
+
+    .span {
+        color: orange;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #007bff;
+        text-decoration: underline;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .col {
+
+        padding: 1%;
+      z-index:1;
+    }
+    .container{
+        z-index: 1;
+
+    }
+
+body{
+    margin-top:20px;
+}
+
+.quote {
+    position: relative;
+
+}
+
+.quote blockquote {
+    padding: 0px;
+    border: 0;
+    margin: 0;
+    font-size: 14px;
+    font-style: italic;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.quote blockquote p {
+    color: #fff;
+    padding-top: 25px;
+    padding-bottom: 45px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.container-forum{
+
+    margin-top:10%;
+    margin-left:5%;
+}
+.catalog-page{
+    background-color:white;
+    margin-top:5%;
+}
+.filter-item{
+    margin-bottom: 10%;
+}
+
+.quote.dark blockquote {
+    background-color: lightblue;
+}
+
+.quote-footer .quote-author-img img {
+    float: left;
+    max-width: 90px;
+    width: 90px;
+    height: 90px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    margin-left: -5px;
+    margin-top: -40px;
+    position: relative;
+    z-index: 1;
+    padding: 5px;
+    background-color: #fff;
+}
+
+.quote-footer h4 {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.quote-footer p {
+    font-weight: 400;
+    font-style: italic;
+    font-size: 14px;
+}
+.forum-div {
+    position: relative;
+    top: 5%;
+    left: 0;
+    max-width: 100%;
+    height: 30%;
+    z-index:-1;
+
+}
+.prevButtonDiv {
+    position: fixed;
+    left: 10px;
+    bottom: 50%;
+}
+
+.nextButtonDiv {
+    position: fixed;
+    right: 10px;
+    bottom: 50%;
+}
+
+.buttonLook {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: lightskyblue;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.buttonLook:hover {
+    background-color: lightblue;
+}
+
+@media only screen and (max-width: 600px) {
+    .footer {
+        height: auto;
+        position: relative;
+    }
+    .card-img-top {
+        height: auto;
+        max-width: 100%;
+    }
+    .btn-primary,
+    .btn-success,
+    .btn-info {
+        width: 100%;
+    }
+    .navbar-nav .nav-link {
+        padding: 5px;
+    }
+    .container-forum {
+        margin-top: 5%;
+        margin-left: 2%;
+    }
+    .quote-footer .quote-author-img img {
+        max-width: 60px;
+        width: 60px;
+        height: 60px;
+        margin-top: -30px;
+    }
+    .quote blockquote p {
+        padding-top: 15px;
+        padding-bottom: 25px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 12px;
+    }
+    .carousel-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+    }
+
+    .prevButtonDiv,
+    .nextButtonDiv {
+        display: none;
+    }
+    .filter-item {
+        margin-bottom: 5%;
+    }
+}
+
+
+
+

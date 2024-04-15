@@ -33,7 +33,7 @@ public class CategoryController {
         List<Games> games = gamesRepository.findByCategoryIsContainingIgnoreCase(categoryName);
         model.addAttribute("games", games);
 
-        return "/products/listcategory";
+        return "products/listcategory";
     }
 
     @GetMapping("/gamedetails/{id}")
