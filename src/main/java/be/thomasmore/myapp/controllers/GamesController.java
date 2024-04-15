@@ -2,13 +2,12 @@ package be.thomasmore.myapp.controllers;
 
 import be.thomasmore.myapp.model.Games;
 import be.thomasmore.myapp.model.GamesDto;
-import be.thomasmore.myapp.model.Ratings;
-import be.thomasmore.myapp.model.Reviews;
+
 import be.thomasmore.myapp.repositories.GamesRepository;
 
 import be.thomasmore.myapp.repositories.RatingsRepository;
 import be.thomasmore.myapp.repositories.ReviewsRepository;
-import jakarta.transaction.Transactional;
+
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,9 +27,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
+
 import java.util.Optional;
 
 
@@ -66,7 +63,7 @@ public class GamesController {
 
 
     @PostMapping("/create")
-    public String createProduct( @Valid @ModelAttribute GamesDto gamesDto, BindingResult result) throws IOException {
+    public String createProduct( @Valid @ModelAttribute GamesDto gamesDto, BindingResult result)  {
 
         if (gamesDto.getImageFile().isEmpty()) {
             result.addError(new FieldError("gamesDto", "imageFile", "The image file is required"));
@@ -117,7 +114,7 @@ public class GamesController {
 
 
     @PostMapping("/edit/{id}")
-    public String editGame(@Valid @ModelAttribute GamesDto gamesDto, BindingResult result, @PathVariable int id, Model model) {
+    public String editGame(@Valid @ModelAttribute GamesDto gamesDto, BindingResult result, @PathVariable int id) {
         logger.debug("Posting data for ID: {}", id);
         if (result.hasErrors()) {
             logger.error("Validation errors: {}", result.getAllErrors());
