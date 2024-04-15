@@ -45,15 +45,16 @@ public class GamesController {
     private RatingsRepository ratingsRepository;
     private static final Logger logger = LoggerFactory.getLogger(GamesController.class);
     @GetMapping({"", "/"})
-    public String showGamesList(Model model) {
 
-        Iterable<Games> allgames;
 
-        allgames = gamesRepository.findAll();
+            public String showGamesList(Model model) {
 
-        model.addAttribute("allgames", allgames);
-        return "products/gameslist";
-    }
+                Iterable<Games> allgames;
+                allgames = gamesRepository.findAll();
+
+                model.addAttribute("allgames", allgames);
+                return "products/gameslist";
+            }
 
     @GetMapping("/create")
     public String showCreatePage(Model model) {
