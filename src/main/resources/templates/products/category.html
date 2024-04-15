@@ -21,7 +21,7 @@
                 <img src="/img/horror_image.jpg" class="card-img-top" alt="Horror Games">
                 <div class="card-body">
                     <h5 class="card-title">Horror Games</h5>
-                    <a href="/products/listcategory/horror" class="btn btn-primary">View</a>
+                    <a th:href="@{/products/listcategory/{category}(category=Horror)}" class="btn btn-primary">View</a>
                 </div>
             </div>
         </div>
@@ -32,7 +32,8 @@
                 <img src="/img/action_image.jpg" class="card-img-top" alt="Action Games">
                 <div class="card-body">
                     <h5 class="card-title">Action Games</h5>
-                    <a href="/products/listcategory/action" class="btn btn-primary">View</a>
+                    <a th:href="@{/products/listcategory/{category}(category=Action)}" class="btn btn-primary">View</a>
+
                 </div>
             </div>
         </div>
@@ -43,7 +44,7 @@
                 <img src="/img/adventure_img.jpg" class="card-img-top" alt="Adventure Games">
                 <div class="card-body">
                     <h5 class="card-title">Adventure Games</h5>
-                    <a href="/products/listcategory/adventure" class="btn btn-primary">View</a>
+                    <a th:href="@{/products/listcategory/{category}(category=Adventure)}" class="btn btn-primary">View</a>
                 </div>
             </div>
         </div>
@@ -53,7 +54,7 @@
                 <img src="/img/survival_image.jpg" class="card-img-top" alt="Survival Games">
                 <div class="card-body">
                     <h5 class="card-title">Survival Games</h5>
-                    <a href="/products/listcategory/survival" class="btn btn-primary">View</a>
+                    <a th:href="@{/products/listcategory/{category}(category=Survival)}" class="btn btn-primary">View</a>
                 </div>
             </div>
         </div>
@@ -64,7 +65,7 @@
                 <img src="/img/shooter_image.jpg" class="card-img-top" alt="Shooter Games">
                 <div class="card-body">
                     <h5 class="card-title">Shooter Games</h5>
-                    <a href="/products/listcategory/shooter" class="btn btn-primary">View</a>
+                    <a th:href="@{/products/listcategory/{category}(category=Shooter)}" class="btn btn-primary">View</a>
                 </div>
             </div>
         </div>
